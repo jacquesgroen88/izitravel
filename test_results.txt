@@ -1,4 +1,0 @@
-Found 14 unique Unsplash URLs.
-
-
-Done. Found 0 broken URLs out of 14.
