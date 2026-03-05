@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Plane, Facebook, Twitter, Instagram, Phone, Mail, MapPin } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Phone, Mail, MapPin } from 'lucide-react';
+import logoImg from './logo/izilogo.jpg';
 
 export default function Footer() {
     return (
@@ -7,11 +8,8 @@ export default function Footer() {
             <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
                 {/* Brand */}
                 <div className="space-y-4">
-                    <Link to="/" className="flex items-center gap-2 group mb-6">
-                        <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center text-white">
-                            <Plane className="w-5 h-5" />
-                        </div>
-                        <span className="font-bold text-xl tracking-tight text-white uppercase">Vaal Travel Co.</span>
+                    <Link to="/" className="flex items-center group mb-6">
+                        <img src={logoImg} alt="IziTravel Logo" className="h-14 w-auto object-contain invert mix-blend-screen grayscale brightness-200" />
                     </Link>
                     <p className="text-sm text-gray-400">
                         Helping travellers in the Vaal Triangle book unforgettable trips to Thailand, Mauritius, and Zanzibar. expert travel planning, best deals, and personal support.

@@ -4,8 +4,8 @@ const images = [
     { url: 'https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?q=80&w=2000&auto=format&fit=crop', label: 'Beaches', colSpan: 'col-span-2', rowSpan: 'row-span-2' },
     { url: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=2000&auto=format&fit=crop', label: 'Resorts', colSpan: 'col-span-1', rowSpan: 'row-span-1' },
     { url: 'https://images.unsplash.com/photo-1516815231560-8f41ec531527?q=80&w=2000&auto=format&fit=crop', label: 'Island Sunsets', colSpan: 'col-span-1', rowSpan: 'row-span-1' },
-    { url: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=2000&auto=format&fit=crop', label: 'Couples Travel', colSpan: 'col-span-1', rowSpan: 'row-span-2' },
-    { url: 'https://images.unsplash.com/photo-1549692520-acc6669e2f0c?q=80&w=2000&auto=format&fit=crop', label: 'Family Holidays', colSpan: 'col-span-1', rowSpan: 'row-span-1' },
+    { url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2000&auto=format&fit=crop', label: 'Tropical Beaches', colSpan: 'col-span-1', rowSpan: 'row-span-2' },
+    { url: 'https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?q=80&w=2000&auto=format&fit=crop', label: 'Overwater Villas', colSpan: 'col-span-1', rowSpan: 'row-span-1' },
     { url: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=2000&auto=format&fit=crop', label: 'Adventures', colSpan: 'col-span-1', rowSpan: 'row-span-1' },
 ];
 

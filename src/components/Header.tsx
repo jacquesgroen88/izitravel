@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Phone, Plane } from 'lucide-react';
+import { Phone } from 'lucide-react';
+import logoImg from './logo/izilogo.jpg';
 
 export default function Header() {
     const { pathname } = useLocation();
@@ -17,11 +18,8 @@ export default function Header() {
             <div className="max-w-7xl mx-auto w-full px-6 flex items-center justify-between">
 
                 {/* Logo */}
-                <Link to="/" className="flex items-center gap-2 group">
-                    <div className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center text-white transform group-hover:rotate-12 transition-transform">
-                        <Plane className="w-6 h-6" />
-                    </div>
-                    <span className="font-bold text-xl tracking-tight text-gray-900 uppercase">Vaal Travel Co.</span>
+                <Link to="/" className="flex items-center group">
+                    <img src={logoImg} alt="IziTravel Logo" className="h-16 w-auto object-contain" />
                 </Link>
 
                 {/* Center Nav */}
