@@ -96,7 +96,7 @@ export default function Mauritius() {
                     <h2 className="text-4xl font-bold mb-12 text-center text-gray-900">Why Mauritius?</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {[
-                            { img: 'https://images.unsplash.com/photo-1562972904-4ec8a0d3acfb?q=80&w=2000&auto=format&fit=crop', title: 'Pristine Lagoons', desc: 'Turquoise waters and powder-white sand beaches' },
+                            { img: 'https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?q=80&w=2000&auto=format&fit=crop', title: 'Pristine Lagoons', desc: 'Turquoise waters and powder-white sand beaches' },
                             { img: 'https://images.unsplash.com/photo-1615880484746-a134be9a6ecf?q=80&w=2000&auto=format&fit=crop', title: 'Luxury Resorts', desc: 'World-class 5-star beachfront properties' },
                             { img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2000&auto=format&fit=crop', title: 'Creole Culture', desc: 'Vibrant cuisine, markets and local flavours' },
                             { img: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2000&auto=format&fit=crop', title: 'Water Sports', desc: 'Kitesurfing, diving and ocean adventures' }

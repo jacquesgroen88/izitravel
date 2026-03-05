@@ -26,10 +26,15 @@ export default function Header() {
                 <nav className="hidden md:flex items-center gap-8">
                     <Link to="/" className={`text-sm font-semibold transition-colors ${isActive('/') ? 'text-primary-600' : 'text-gray-600 hover:text-primary-600'}`}>Home</Link>
                     {navLinks.map((link) => (
-                        <a key={link.name} href={link.path.startsWith('/#') && pathname !== '/' ? `/${link.path}` : link.path}
-                            className={`text-sm font-semibold transition-colors text-gray-600 hover:text-primary-600`}>
-                            {link.name}
-                        </a>
+                        link.path.startsWith('/#')
+                            ? <a key={link.name} href={pathname !== '/' ? `/${link.path}` : link.path}
+                                className="text-sm font-semibold transition-colors text-gray-600 hover:text-primary-600">
+                                {link.name}
+                            </a>
+                            : <Link key={link.name} to={link.path}
+                                className={`text-sm font-semibold transition-colors ${isActive(link.path) ? 'text-primary-600' : 'text-gray-600 hover:text-primary-600'}`}>
+                                {link.name}
+                            </Link>
                     ))}
                 </nav>
 

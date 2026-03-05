@@ -23,7 +23,7 @@ const packages = [
     {
         id: 'pkg3',
         title: 'Mauritius Family Holiday',
-        image: 'https://images.unsplash.com/photo-1549692520-acc6669e2f0c?q=80&w=2116&auto=format&fit=crop',
+        image: 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?q=80&w=2116&auto=format&fit=crop',
         duration: '7 Nights',
         location: 'Mauritius',
         highlights: ['Beachfront Resort', 'Kids Club Included', 'Flights & Transfers'],

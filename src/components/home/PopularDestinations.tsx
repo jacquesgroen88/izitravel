@@ -31,14 +31,14 @@ export default function PopularDestinations() {
         <section id="destinations" className="py-24 bg-white">
             <div className="max-w-7xl mx-auto px-6">
 
-                <div className="mb-16 text-center lg:text-left flex flex-col lg:flex-row justify-between items-end gap-6">
-                    <div className="max-w-2xl">
+                <div className="mb-16 text-center flex flex-col lg:flex-row lg:justify-between lg:items-end gap-6">
+                    <div className="max-w-2xl mx-auto lg:mx-0">
                         <h2 className="text-4xl font-bold mb-4 text-gray-900">Popular Destinations</h2>
                         <p className="text-gray-600 text-lg">
                             Discover our handpicked tropical escapes offering breathtaking beaches, luxury resorts, and cultural adventures.
                         </p>
                     </div>
-                    <Link to="/#packages" className="text-primary-600 font-semibold hover:text-primary-700 flex items-center gap-2 group">
+                    <Link to="/#packages" className="text-primary-600 font-semibold hover:text-primary-700 flex items-center justify-center lg:justify-start gap-2 group shrink-0">
                         View All Packages
                         <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
                     </Link>

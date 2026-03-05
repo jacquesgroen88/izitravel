@@ -4,7 +4,7 @@ const images = [
     // Hero — Zanzibar white sand beach, large focal point
     { url: 'https://images.unsplash.com/photo-1586611292717-f828b167408c?q=80&w=2000&auto=format&fit=crop', label: 'Zanzibar Beaches', dest: 'Zanzibar', mdColSpan: 'md:col-span-2', mdRowSpan: 'md:row-span-3' },
     // Mauritius aerial turquoise lagoon
-    { url: 'https://images.unsplash.com/photo-1562972904-4ec8a0d3acfb?q=80&w=2000&auto=format&fit=crop', label: 'Mauritius Lagoons', dest: 'Mauritius', mdColSpan: 'md:col-span-1', mdRowSpan: 'md:row-span-2' },
+    { url: 'https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?q=80&w=2000&auto=format&fit=crop', label: 'Mauritius Lagoons', dest: 'Mauritius', mdColSpan: 'md:col-span-1', mdRowSpan: 'md:row-span-2' },
     // Thailand Phi Phi island
     { url: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=2000&auto=format&fit=crop', label: 'Thai Island Life', dest: 'Thailand', mdColSpan: 'md:col-span-1', mdRowSpan: 'md:row-span-1' },
     // Overwater villas / bungalows
