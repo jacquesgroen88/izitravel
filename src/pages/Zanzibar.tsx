@@ -96,10 +96,10 @@ export default function Zanzibar() {
                     <h2 className="text-4xl font-bold mb-12 text-center text-gray-900">Why Choose Zanzibar?</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {[
-                            { img: 'https://images.unsplash.com/photo-1549692520-acc6669e2f0c?q=80&w=2080&auto=format&fit=crop', title: 'World-Class Beaches', desc: 'Powder-white sand and crystal clear turquoise waters as far as the eye can see.' },
+                            { img: 'https://images.unsplash.com/photo-1586611292717-f828b167408c?q=80&w=2000&auto=format&fit=crop', title: 'World-Class Beaches', desc: 'Powder-white sand and crystal clear turquoise waters as far as the eye can see.' },
                             { img: 'https://images.unsplash.com/photo-1516815231560-8f41ec531527?q=80&w=2000&auto=format&fit=crop', title: 'Incredible Sunsets', desc: 'Romantic dhow cruises beneath breathtaking Indian Ocean sunsets.' },
-                            { img: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=2000&auto=format&fit=crop', title: 'Luxury Resorts', desc: 'From boutique beachfront hideaways to sprawling all-inclusive 5-star estates.' },
-                            { img: 'https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?q=80&w=2000&auto=format&fit=crop', title: 'Snorkelling & Diving', desc: 'Explore vibrant coral reefs and swim with majestic sea turtles and dolphins.' }
+                            { img: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2000&auto=format&fit=crop', title: 'Luxury Resorts', desc: 'From boutique beachfront hideaways to sprawling all-inclusive 5-star estates.' },
+                            { img: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2000&auto=format&fit=crop', title: 'Snorkelling & Diving', desc: 'Explore vibrant coral reefs and swim with majestic sea turtles and dolphins.' }
                         ].map((item, i) => (
                             <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="group rounded-2xl overflow-hidden shadow-md relative h-80 flex">
                                 <img src={item.img} alt={item.title} className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
@@ -119,9 +119,9 @@ export default function Zanzibar() {
                     <h2 className="text-4xl font-bold mb-16 text-center text-gray-900">Top Zanzibar Resorts</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
-                            { title: 'Luxury Beach Resort', nights: '5 Nights', inc: 'All-inclusive', img: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=2000&auto=format&fit=crop' },
-                            { title: 'Romantic Zanzibar Escape', nights: '7 Nights', inc: 'Perfect for honeymoons', img: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=2000&auto=format&fit=crop' },
-                            { title: 'Family Zanzibar Holiday', nights: '7 Nights', inc: 'Beachfront resort', img: 'https://images.unsplash.com/photo-1549692520-acc6669e2f0c?q=80&w=2000&auto=format&fit=crop' }
+                            { title: 'Luxury Beach Resort', nights: '5 Nights', inc: 'All-inclusive', img: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=2000&auto=format&fit=crop' },
+                            { title: 'Romantic Zanzibar Escape', nights: '7 Nights', inc: 'Perfect for honeymoons', img: 'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=2000&auto=format&fit=crop' },
+                            { title: 'Family Zanzibar Holiday', nights: '7 Nights', inc: 'Beachfront resort', img: 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?q=80&w=2000&auto=format&fit=crop' }
                         ].map((pkg, i) => (
                             <div key={i} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 flex flex-col group">
                                 <div className="overflow-hidden">
@@ -164,11 +164,11 @@ export default function Zanzibar() {
                     <h2 className="text-4xl font-bold mb-4 text-center text-gray-900">Zanzibar Inspiration Gallery</h2>
                     <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Immerse yourself in the magic of the Spice Island.</p>
                     <div className="columns-2 md:columns-3 gap-4 space-y-4">
-                        <img src="https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?auto=format&fit=crop&q=80&w=800" className="rounded-xl w-full" alt="White beaches" />
-                        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=800" className="rounded-xl w-full" alt="Luxury resorts" />
-                        <img src="https://images.unsplash.com/photo-1516815231560-8f41ec531527?auto=format&fit=crop&q=80&w=800" className="rounded-xl w-full" alt="Sunsets" />
-                        <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=800" className="rounded-xl w-full" alt="Couples" />
-                        <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&q=80&w=800" className="rounded-xl w-full" alt="Ocean views" />
+                        <img src="https://images.unsplash.com/photo-1586611292717-f828b167408c?auto=format&fit=crop&q=80&w=800" className="rounded-xl w-full" alt="Zanzibar white beaches" />
+                        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&q=80&w=800" className="rounded-xl w-full" alt="Luxury resort pool" />
+                        <img src="https://images.unsplash.com/photo-1516815231560-8f41ec531527?auto=format&fit=crop&q=80&w=800" className="rounded-xl w-full" alt="Indian Ocean sunset" />
+                        <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&q=80&w=800" className="rounded-xl w-full" alt="Tropical beach family" />
+                        <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&q=80&w=800" className="rounded-xl w-full" alt="Zanzibar ocean views" />
                     </div>
                 </div>
             </section>

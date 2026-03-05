@@ -8,7 +8,8 @@ export default function Mauritius() {
     const faqs = [
         { q: 'Is Mauritius safe?', a: 'Mauritius is considered one of the safest travel destinations in the world with low crime rates, especially in resort areas.' },
         { q: 'Do packages include flights?', a: 'Yes! Our Mauritius packages include direct flights from Johannesburg OR Tambo to Sir Seewoosagur Ramgoolam International Airport.' },
-        { q: 'What is the best time to travel?', a: 'Mauritius is great all year round! The peak summer season is from November to April, while winter (May to October) is cooler with less humidity.' }
+        { q: 'What is the best time to travel?', a: 'Mauritius is great all year round! The peak summer season is from November to April, while winter (May to October) is cooler with less humidity.' },
+        { q: 'Can you customise my package?', a: 'Absolutely. Every package is a starting point — we specialise in tailoring itineraries to your exact dates, budget, and travel style.' }
     ];
 
     return (
@@ -50,13 +51,13 @@ export default function Mauritius() {
                                 transition={{ duration: 0.6, delay: 0.2 }}
                                 className="flex flex-col sm:flex-row gap-4 flex-wrap"
                             >
-                                <div className="flex items-center gap-2 text-sm font-semibold bg-gray-900/60 px-4 py-2 rounded-lg backdrop-blur-sm border border-gray-100/20">
+                                <div className="flex items-center gap-2 text-sm font-semibold bg-white/10 px-4 py-2 rounded-lg backdrop-blur-sm">
                                     <Star className="w-4 h-4 text-yellow-400 fill-current" /> Premium Resorts
                                 </div>
-                                <div className="flex items-center gap-2 text-sm font-semibold bg-gray-900/60 px-4 py-2 rounded-lg backdrop-blur-sm border border-gray-100/20">
+                                <div className="flex items-center gap-2 text-sm font-semibold bg-white/10 px-4 py-2 rounded-lg backdrop-blur-sm">
                                     <CheckCircle2 className="w-4 h-4 text-green-400" /> Direct Flights from SA
                                 </div>
-                                <div className="flex items-center gap-2 text-sm font-semibold bg-gray-900/60 px-4 py-2 rounded-lg backdrop-blur-sm border border-gray-100/20">
+                                <div className="flex items-center gap-2 text-sm font-semibold bg-white/10 px-4 py-2 rounded-lg backdrop-blur-sm">
                                     <CheckCircle2 className="w-4 h-4 text-green-400" /> Expert Planning
                                 </div>
                             </motion.div>
@@ -89,15 +90,38 @@ export default function Mauritius() {
                 </div>
             </section>
 
-            {/* Resorts */}
-            <section className="py-24 bg-gray-50 border-b border-gray-100">
+            {/* Why Mauritius */}
+            <section className="py-24 bg-gray-50">
+                <div className="max-w-7xl mx-auto px-6">
+                    <h2 className="text-4xl font-bold mb-12 text-center text-gray-900">Why Mauritius?</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {[
+                            { img: 'https://images.unsplash.com/photo-1562972904-4ec8a0d3acfb?q=80&w=2000&auto=format&fit=crop', title: 'Pristine Lagoons', desc: 'Turquoise waters and powder-white sand beaches' },
+                            { img: 'https://images.unsplash.com/photo-1615880484746-a134be9a6ecf?q=80&w=2000&auto=format&fit=crop', title: 'Luxury Resorts', desc: 'World-class 5-star beachfront properties' },
+                            { img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2000&auto=format&fit=crop', title: 'Creole Culture', desc: 'Vibrant cuisine, markets and local flavours' },
+                            { img: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2000&auto=format&fit=crop', title: 'Water Sports', desc: 'Kitesurfing, diving and ocean adventures' }
+                        ].map((item, i) => (
+                            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="group rounded-2xl overflow-hidden shadow-sm relative h-80">
+                                <img src={item.img} alt={item.title} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent p-6 flex flex-col justify-end">
+                                    <h3 className="text-xl font-bold text-white mb-1">{item.title}</h3>
+                                    <p className="text-gray-200 text-sm">{item.desc}</p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Featured Resorts */}
+            <section className="py-24 bg-white">
                 <div className="max-w-7xl mx-auto px-6">
                     <h2 className="text-4xl font-bold mb-16 text-center text-gray-900">Featured Mauritius Resorts</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
-                            { title: 'Trou aux Biches Beachcomber', nights: '7 Nights', inc: 'Half-Board', img: 'https://images.unsplash.com/photo-1549692520-acc6669e2f0c?q=80&w=2116&auto=format&fit=crop' },
-                            { title: 'LUX* Le Morne Resort', nights: '5 Nights', inc: 'All-inclusive', img: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=2025&auto=format&fit=crop' },
-                            { title: 'The Residence Mauritius', nights: '7 Nights', inc: 'Family Suite', img: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=2000&auto=format&fit=crop' }
+                            { title: 'Trou aux Biches Beachcomber', nights: '7 Nights', inc: 'Half-Board', img: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2000&auto=format&fit=crop' },
+                            { title: 'LUX* Le Morne Resort', nights: '5 Nights', inc: 'All-inclusive', img: 'https://images.unsplash.com/photo-1614082242765-7c98ca0f3df3?q=80&w=2000&auto=format&fit=crop' },
+                            { title: 'The Residence Mauritius', nights: '7 Nights', inc: 'Family Suite', img: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=2000&auto=format&fit=crop' }
                         ].map((pkg, i) => (
                             <div key={i} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 flex flex-col group">
                                 <div className="overflow-hidden">
@@ -114,8 +138,51 @@ export default function Mauritius() {
                 </div>
             </section>
 
+            {/* What's Included */}
+            <section className="py-20 bg-primary-50">
+                <div className="max-w-4xl mx-auto px-6 text-center">
+                    <h2 className="text-3xl font-bold mb-8 text-gray-900">What's Typically Included?</h2>
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                        {['Flights from SA', 'Hotel Accommodation', 'Airport Transfers', 'Selected Excursions', 'Travel Support'].map((inc, i) => (
+                            <div key={i} className="bg-white p-4 rounded-xl shadow-sm border border-primary-100 flex flex-col items-center gap-3">
+                                <CheckCircle2 className="w-6 h-6 text-primary-500" />
+                                <span className="text-sm font-semibold text-gray-700">{inc}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             <WhyBookWithUs />
             <Testimonials />
+
+            {/* Season Special */}
+            <section className="py-20 bg-gray-900 text-white text-center">
+                <div className="max-w-3xl mx-auto px-6">
+                    <h2 className="text-4xl font-bold mb-4">Mauritius Season Special</h2>
+                    <p className="text-xl text-gray-300 mb-8">Save up to 20% on selected luxury resort packages when you book before the end of the month.</p>
+                    <a href="#quote" className="btn-primary inline-flex py-4 px-10 text-lg">Get My Mauritius Quote</a>
+                </div>
+            </section>
+
+            {/* FAQ */}
+            <section className="py-24 bg-white">
+                <div className="max-w-3xl mx-auto px-6">
+                    <h2 className="text-3xl font-bold mb-10 text-center text-gray-900">Frequently Asked Questions</h2>
+                    <div className="space-y-4">
+                        {faqs.map((faq, i) => (
+                            <details key={i} className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
+                                <summary className="flex justify-between items-center font-bold text-gray-900 list-none">
+                                    {faq.q}
+                                    <span className="transition group-open:rotate-180"><ChevronDown className="w-5 h-5" /></span>
+                                </summary>
+                                <div className="text-gray-600 mt-4 leading-relaxed">{faq.a}</div>
+                            </details>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             <CTASection />
         </div>
     );
