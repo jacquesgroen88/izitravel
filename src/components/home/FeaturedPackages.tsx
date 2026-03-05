@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Plane, Calendar, MapPin, CheckCircle2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const packages = [
     {
@@ -10,15 +11,17 @@ const packages = [
         location: 'Thailand',
         highlights: ['Flights Included', '4-Star Hotels', 'Phi Phi Island Tour'],
         price: 'R18,500',
+        slug: '/packages/bangkok-phuket',
     },
     {
         id: 'pkg2',
         title: 'Romantic Zanzibar Getaway',
-        image: 'https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?q=80&w=2000&auto=format&fit=crop',
+        image: 'https://images.unsplash.com/photo-1586611292717-f828b167408c?q=80&w=2000&auto=format&fit=crop',
         duration: '5 Nights',
         location: 'Zanzibar',
         highlights: ['All-inclusive Resort', 'Sunset Dhow Cruise', 'Airport Transfers'],
         price: 'R14,200',
+        slug: '/packages/romantic-zanzibar',
     },
     {
         id: 'pkg3',
@@ -28,6 +31,17 @@ const packages = [
         location: 'Mauritius',
         highlights: ['Beachfront Resort', 'Kids Club Included', 'Flights & Transfers'],
         price: 'R21,000',
+        slug: '/packages/mauritius-family',
+    },
+    {
+        id: 'pkg4',
+        title: 'Maldives Overwater Escape',
+        image: 'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=2000&auto=format&fit=crop',
+        duration: '6 Nights',
+        location: 'Maldives',
+        highlights: ['Private Overwater Villa', 'All-inclusive & Seaplane', 'Couples Spa Included'],
+        price: 'R32,000',
+        slug: '/packages/maldives-overwater',
     }
 ];
 
@@ -42,13 +56,13 @@ export default function FeaturedPackages() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
                     {packages.map((pkg, i) => (
                         <motion.div
                             key={pkg.id}
                             initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true, margin: "-50px" }}
+                            viewport={{ once: true, margin: '-50px' }}
                             transition={{ duration: 0.4, delay: i * 0.1 }}
                             className="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col group"
                         >
@@ -88,9 +102,9 @@ export default function FeaturedPackages() {
                                     ))}
                                 </ul>
 
-                                <button className="btn-primary w-full shadow-primary-500/20">
+                                <Link to={pkg.slug} className="btn-primary w-full shadow-primary-500/20 flex items-center justify-center gap-2">
                                     <Plane className="w-5 h-5" /> View Package
-                                </button>
+                                </Link>
                             </div>
                         </motion.div>
                     ))}

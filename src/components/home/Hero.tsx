@@ -1,7 +1,18 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const rotatingWords = ['Island Holiday', 'Honeymoon', 'Birthday Escape', 'Wedding Getaway'];
 
 export default function Hero() {
+    const [wordIndex, setWordIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setWordIndex((i) => (i + 1) % rotatingWords.length);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
             {/* Background Image & Overlay */}
@@ -25,13 +36,31 @@ export default function Hero() {
                         >
                             Your Premier Travel Agent in the Vaal
                         </motion.div>
+
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.1 }}
                             className="text-5xl md:text-7xl font-extrabold leading-tight mb-6 drop-shadow-2xl text-white"
                         >
-                            Plan Your Dream <br /><span className="text-primary-400 drop-shadow-lg">Island Holiday</span>
+                            Plan Your Dream
+                            <br />
+                            <span className="relative inline-block min-h-[1.2em]">
+                                <AnimatePresence mode="wait">
+                                    <motion.span
+                                        key={wordIndex}
+                                        initial={{ opacity: 0, y: 30 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -30 }}
+                                        transition={{ duration: 0.45, ease: 'easeInOut' }}
+                                        className="text-primary-400 drop-shadow-lg absolute left-0"
+                                    >
+                                        {rotatingWords[wordIndex]}
+                                    </motion.span>
+                                </AnimatePresence>
+                                {/* Invisible placeholder to maintain layout height */}
+                                <span className="invisible">{rotatingWords.reduce((a, b) => a.length > b.length ? a : b)}</span>
+                            </span>
                         </motion.h1>
 
                         <motion.p
@@ -40,7 +69,7 @@ export default function Hero() {
                             transition={{ duration: 0.6, delay: 0.2 }}
                             className="text-lg md:text-2xl text-gray-50 mb-10 max-w-xl font-medium leading-relaxed drop-shadow-xl"
                         >
-                            Helping travellers in the Vaal Triangle book unforgettable trips to Thailand, Mauritius and Zanzibar. Expert advice, guaranteed.
+                            Helping travellers in the Vaal Triangle book unforgettable trips to Thailand, Mauritius, Zanzibar and the Maldives. Expert advice, guaranteed.
                         </motion.p>
 
                         <motion.div
@@ -78,6 +107,7 @@ export default function Hero() {
                                             <option value="thailand">Thailand</option>
                                             <option value="mauritius">Mauritius</option>
                                             <option value="zanzibar">Zanzibar</option>
+                                            <option value="maldives">Maldives</option>
                                             <option value="undecided">Not sure yet</option>
                                         </select>
                                     </div>

@@ -20,9 +20,16 @@ const destinations = [
     {
         id: 'zanzibar',
         name: 'Zanzibar',
-        image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=2000&auto=format&fit=crop',
+        image: 'https://images.unsplash.com/photo-1586611292717-f828b167408c?q=80&w=2000&auto=format&fit=crop',
         description: 'Exotic beaches, romantic sunsets, and historic Stone Town explorations.',
         path: '/zanzibar'
+    },
+    {
+        id: 'maldives',
+        name: 'Maldives',
+        image: 'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=2000&auto=format&fit=crop',
+        description: 'Private overwater villas, crystal lagoons, and unparalleled luxury. The pinnacle of island living.',
+        path: '/maldives'
     }
 ];
 
@@ -44,7 +51,7 @@ export default function PopularDestinations() {
                     </Link>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {destinations.map((dest, i) => (
                         <motion.div
                             key={dest.id}
