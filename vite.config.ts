@@ -11,5 +11,8 @@ export default defineConfig({
         proxy: {
             '/api': 'http://localhost:3001'
         }
+    },
+    build: {
+        target: 'es2015'
     }
 })
