@@ -6,7 +6,7 @@ const rotatingWords = ['Island Holiday', 'Honeymoon', 'Birthday Escape', 'Weddin
 
 export default function Hero() {
     const [wordIndex, setWordIndex] = useState(0);
-    const [formData, setFormData] = useState({ destination: '', travelMonth: '', budget: '', name: '', whatsapp: '' });
+    const [formData, setFormData] = useState({ destination: '', travelMonth: '', budget: '', name: '', whatsapp: '', email: '', travellers: '' });
     const [submitting, setSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState('');
@@ -178,6 +178,23 @@ export default function Hero() {
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-1">WhatsApp Number</label>
                                         <input type="tel" name="whatsapp" value={formData.whatsapp} onChange={handleChange} placeholder="+27 XX XXX XXXX" className="input-field" required />
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                        <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" className="input-field" required />
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">Number of Travellers</label>
+                                        <select name="travellers" value={formData.travellers} onChange={handleChange} className="input-field appearance-none">
+                                            <option value="">Select</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5+">5+</option>
+                                        </select>
                                     </div>
 
                                     {error && <p className="text-red-500 text-sm">{error}</p>}

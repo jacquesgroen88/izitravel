@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { submitToWebhook } from '../../lib/webhook';
 
 export default function QuickQuote() {
-    const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', whatsapp: '', destination: '', travelMonth: '', budget: '', specialRequests: '' });
+    const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', whatsapp: '', destination: '', travelMonth: '', budget: '', travellers: '', specialRequests: '' });
     const [submitting, setSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState('');
@@ -76,7 +76,18 @@ export default function QuickQuote() {
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div>
+                                <label className="block text-sm font-semibold text-gray-700 mb-2">Number of Travellers</label>
+                                <select name="travellers" value={formData.travellers} onChange={handleChange} className="input-field appearance-none bg-white">
+                                    <option value="">Select</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5+">5+</option>
+                                </select>
+                            </div>
                             <div>
                                 <label className="block text-sm font-semibold text-gray-700 mb-2">Destination</label>
                                 <select name="destination" value={formData.destination} onChange={handleChange} className="input-field appearance-none bg-white">

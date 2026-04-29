@@ -5,7 +5,7 @@ import CTASection from '../../components/home/CTASection';
 import { submitToWebhook } from '../../lib/webhook';
 
 export default function MaldivesOverwater() {
-    const [formData, setFormData] = useState({ name: '', whatsapp: '', email: '', travelMonth: '' });
+    const [formData, setFormData] = useState({ name: '', whatsapp: '', email: '', travelMonth: '', travellers: '' });
     const [submitting, setSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState('');
@@ -120,6 +120,14 @@ export default function MaldivesOverwater() {
                                 <input type="tel" name="whatsapp" value={formData.whatsapp} onChange={handleChange} placeholder="WhatsApp Number" className="input-field border-gray-200 text-sm" required />
                                 <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email Address" className="input-field border-gray-200 text-sm" required />
                                 <input type="month" name="travelMonth" value={formData.travelMonth} onChange={handleChange} className="input-field border-gray-200 text-sm" />
+                                <select name="travellers" value={formData.travellers} onChange={handleChange} className="input-field appearance-none border-gray-200 text-sm">
+                                    <option value="">Number of Travellers</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5+">5+</option>
+                                </select>
                                 {error && <p className="text-red-500 text-xs">{error}</p>}
                                 <button type="submit" disabled={submitting} className="btn-primary w-full disabled:opacity-60">{submitting ? 'Sending...' : 'Book This Package'}</button>
                             </form>
