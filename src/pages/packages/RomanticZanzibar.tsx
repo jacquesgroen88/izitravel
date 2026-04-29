@@ -1,8 +1,32 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, XCircle, Star, Phone, Clock, MapPin } from 'lucide-react';
 import CTASection from '../../components/home/CTASection';
+import { submitToWebhook } from '../../lib/webhook';
 
 export default function RomanticZanzibar() {
+    const [formData, setFormData] = useState({ name: '', whatsapp: '', email: '', travelMonth: '' });
+    const [submitting, setSubmitting] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState('');
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+        setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setSubmitting(true);
+        setError('');
+        try {
+            await submitToWebhook({ formType: 'package_romantic_zanzibar', ...formData });
+            setSubmitted(true);
+        } catch {
+            setError('Something went wrong. Please try again.');
+        } finally {
+            setSubmitting(false);
+        }
+    };
+
     return (
         <div className="bg-white">
             <section className="relative min-h-[70vh] flex items-end pt-20 overflow-hidden">
@@ -85,13 +109,21 @@ export default function RomanticZanzibar() {
                                 <div className="text-sm text-gray-500 mt-1">All-inclusive • 5 nights</div>
                                 <div className="mt-2 text-xs font-bold text-orange-600 bg-orange-50 rounded-full px-3 py-1 inline-block">🔥 Most popular honeymoon pick</div>
                             </div>
-                            <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
-                                <input type="text" placeholder="Your Name" className="input-field border-gray-200 text-sm" />
-                                <input type="tel" placeholder="WhatsApp Number" className="input-field border-gray-200 text-sm" />
-                                <input type="email" placeholder="Email Address" className="input-field border-gray-200 text-sm" />
-                                <input type="month" className="input-field border-gray-200 text-sm" />
-                                <button type="submit" className="btn-primary w-full">Book This Package</button>
+                            {submitted ? (
+                                <div className="py-6 text-center">
+                                    <div className="text-green-500 text-4xl mb-3">&#10003;</div>
+                                    <p className="font-semibold text-gray-900">Thanks! We'll be in touch soon.</p>
+                                </div>
+                            ) : (
+                            <form className="space-y-3" onSubmit={handleSubmit}>
+                                <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your Name" className="input-field border-gray-200 text-sm" required />
+                                <input type="tel" name="whatsapp" value={formData.whatsapp} onChange={handleChange} placeholder="WhatsApp Number" className="input-field border-gray-200 text-sm" required />
+                                <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email Address" className="input-field border-gray-200 text-sm" required />
+                                <input type="month" name="travelMonth" value={formData.travelMonth} onChange={handleChange} className="input-field border-gray-200 text-sm" />
+                                {error && <p className="text-red-500 text-xs">{error}</p>}
+                                <button type="submit" disabled={submitting} className="btn-primary w-full disabled:opacity-60">{submitting ? 'Sending...' : 'Book This Package'}</button>
                             </form>
+                            )}
                             <div className="mt-4 flex items-center justify-center gap-2 text-sm text-gray-500">
                                 <Phone className="w-4 h-4" />
                                 <a href="tel:0161234567" className="hover:text-primary-600 font-semibold">016 123 4567</a>

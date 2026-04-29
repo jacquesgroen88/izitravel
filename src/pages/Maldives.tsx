@@ -1,10 +1,34 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, Star, ChevronDown } from 'lucide-react';
 import WhyBookWithUs from '../components/home/WhyBookWithUs';
 import Testimonials from '../components/home/Testimonials';
 import CTASection from '../components/home/CTASection';
+import { submitToWebhook } from '../lib/webhook';
 
 export default function Maldives() {
+    const [formData, setFormData] = useState({ name: '', travelMonth: '', travellers: '', budget: '', phone: '', email: '' });
+    const [submitting, setSubmitting] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState('');
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
+        setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setSubmitting(true);
+        setError('');
+        try {
+            await submitToWebhook({ formType: 'maldives_quote', ...formData });
+            setSubmitted(true);
+        } catch {
+            setError('Something went wrong. Please try again.');
+        } finally {
+            setSubmitting(false);
+        }
+    };
+
     const faqs = [
         { q: 'Is the Maldives good for a honeymoon?', a: 'Absolutely — the Maldives is consistently ranked as the #1 honeymoon destination in the world. Private overwater bungalows, intimate dinners on the beach, and world-class spa experiences make it incomparable.' },
         { q: 'Do your packages include flights?', a: 'Yes! All our Maldives packages include return flights from South Africa, seaplane or speedboat transfers to your resort island, and all listed inclusions.' },
@@ -52,22 +76,30 @@ export default function Maldives() {
                             <div className="bg-white rounded-2xl shadow-2xl p-8">
                                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Plan My Maldives Holiday</h3>
                                 <p className="text-gray-500 mb-6 text-sm">Get a free, no-obligation custom quote.</p>
-                                <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                                    <input type="text" placeholder="Your Name" className="input-field border-gray-200" />
+                                {submitted ? (
+                                    <div className="py-8 text-center">
+                                        <div className="text-green-500 text-4xl mb-3">&#10003;</div>
+                                        <p className="font-semibold text-gray-900">Thanks! We'll be in touch soon.</p>
+                                    </div>
+                                ) : (
+                                <form className="space-y-4" onSubmit={handleSubmit}>
+                                    <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your Name" className="input-field border-gray-200" required />
                                     <div className="grid grid-cols-2 gap-4">
-                                        <input type="month" className="input-field border-gray-200" />
-                                        <select className="input-field appearance-none px-2 border-gray-200">
-                                            <option>Travellers</option><option>1</option><option>2</option><option>3+</option>
+                                        <input type="month" name="travelMonth" value={formData.travelMonth} onChange={handleChange} className="input-field border-gray-200" />
+                                        <select name="travellers" value={formData.travellers} onChange={handleChange} className="input-field appearance-none px-2 border-gray-200">
+                                            <option value="">Travellers</option><option value="1">1</option><option value="2">2</option><option value="3+">3+</option>
                                         </select>
                                     </div>
-                                    <select className="input-field appearance-none border-gray-200">
-                                        <option>Budget Range (per person)</option>
-                                        <option>R25k - R35k</option><option>R35k - R55k</option><option>R55k+</option>
+                                    <select name="budget" value={formData.budget} onChange={handleChange} className="input-field appearance-none border-gray-200">
+                                        <option value="">Budget Range (per person)</option>
+                                        <option value="R25k-R35k">R25k - R35k</option><option value="R35k-R55k">R35k - R55k</option><option value="R55k+">R55k+</option>
                                     </select>
-                                    <input type="tel" placeholder="WhatsApp / Phone" className="input-field border-gray-200" />
-                                    <input type="email" placeholder="Email Address" className="input-field border-gray-200" />
-                                    <button type="submit" className="btn-primary w-full mt-2">Get My Maldives Quote</button>
+                                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="WhatsApp / Phone" className="input-field border-gray-200" required />
+                                    <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email Address" className="input-field border-gray-200" required />
+                                    {error && <p className="text-red-500 text-sm">{error}</p>}
+                                    <button type="submit" disabled={submitting} className="btn-primary w-full mt-2 disabled:opacity-60">{submitting ? 'Sending...' : 'Get My Maldives Quote'}</button>
                                 </form>
+                                )}
                             </div>
                         </motion.div>
                     </div>

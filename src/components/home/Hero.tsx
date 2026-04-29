@@ -1,10 +1,32 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { submitToWebhook } from '../../lib/webhook';
 
 const rotatingWords = ['Island Holiday', 'Honeymoon', 'Birthday Escape', 'Wedding Getaway'];
 
 export default function Hero() {
     const [wordIndex, setWordIndex] = useState(0);
+    const [formData, setFormData] = useState({ destination: '', travelMonth: '', budget: '', name: '', whatsapp: '' });
+    const [submitting, setSubmitting] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState('');
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
+        setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setSubmitting(true);
+        setError('');
+        try {
+            await submitToWebhook({ formType: 'hero_quick_enquiry', ...formData });
+            setSubmitted(true);
+        } catch {
+            setError('Something went wrong. Please try again.');
+        } finally {
+            setSubmitting(false);
+        }
+    };
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -99,10 +121,16 @@ export default function Hero() {
                                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Quick Enquiry</h3>
                                 <p className="text-gray-500 mb-6 text-sm">Let our local experts craft your perfect escape.</p>
 
-                                <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                                {submitted ? (
+                                    <div className="py-8 text-center">
+                                        <div className="text-green-600 text-4xl mb-3">&#10003;</div>
+                                        <p className="font-semibold text-gray-900">Thanks! We'll be in touch soon.</p>
+                                    </div>
+                                ) : (
+                                <form className="space-y-4" onSubmit={handleSubmit}>
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-1">Destination</label>
-                                        <select className="input-field appearance-none">
+                                        <select name="destination" value={formData.destination} onChange={handleChange} className="input-field appearance-none">
                                             <option value="">Where to?</option>
                                             <option value="thailand">Thailand</option>
                                             <option value="mauritius">Mauritius</option>
@@ -115,7 +143,7 @@ export default function Hero() {
                                     <div className="grid grid-cols-2 gap-4">
                                         <div>
                                             <label className="block text-sm font-medium text-gray-700 mb-1">Travel Month</label>
-                                            <select className="input-field appearance-none">
+                                            <select name="travelMonth" value={formData.travelMonth} onChange={handleChange} className="input-field appearance-none">
                                                 <option value="">Month</option>
                                                 <option value="jan">January</option>
                                                 <option value="feb">February</option>
@@ -133,7 +161,7 @@ export default function Hero() {
                                         </div>
                                         <div>
                                             <label className="block text-sm font-medium text-gray-700 mb-1">Budget</label>
-                                            <select className="input-field appearance-none">
+                                            <select name="budget" value={formData.budget} onChange={handleChange} className="input-field appearance-none">
                                                 <option value="">Select</option>
                                                 <option value="standard">Standard</option>
                                                 <option value="premium">Premium</option>
@@ -144,18 +172,20 @@ export default function Hero() {
 
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                                        <input type="text" placeholder="Your Name" className="input-field" />
+                                        <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your Name" className="input-field" required />
                                     </div>
 
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-1">WhatsApp Number</label>
-                                        <input type="tel" placeholder="+27 XX XXX XXXX" className="input-field" />
+                                        <input type="tel" name="whatsapp" value={formData.whatsapp} onChange={handleChange} placeholder="+27 XX XXX XXXX" className="input-field" required />
                                     </div>
 
-                                    <button type="submit" className="btn-primary w-full mt-2">
-                                        Request Pricing
+                                    {error && <p className="text-red-500 text-sm">{error}</p>}
+                                    <button type="submit" disabled={submitting} className="btn-primary w-full mt-2 disabled:opacity-60">
+                                        {submitting ? 'Sending...' : 'Request Pricing'}
                                     </button>
                                 </form>
+                                )}
                             </div>
                         </div>
                     </motion.div>

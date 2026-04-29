@@ -1,7 +1,31 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react';
+import { submitToWebhook } from '../lib/webhook';
 
 export default function Contact() {
+    const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', phone: '', message: '' });
+    const [submitting, setSubmitting] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState('');
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+        setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setSubmitting(true);
+        setError('');
+        try {
+            await submitToWebhook({ formType: 'contact', ...formData });
+            setSubmitted(true);
+        } catch {
+            setError('Something went wrong. Please try again.');
+        } finally {
+            setSubmitting(false);
+        }
+    };
+
     return (
         <div className="bg-gray-50 min-h-screen pt-20">
 
@@ -89,37 +113,46 @@ export default function Contact() {
                     >
                         <h3 className="text-2xl font-bold text-gray-900 mb-8">Send Us a Message</h3>
 
-                        <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                        {submitted ? (
+                            <div className="py-12 text-center">
+                                <div className="text-green-500 text-5xl mb-4">&#10003;</div>
+                                <h4 className="text-xl font-bold text-gray-900 mb-2">Message Sent!</h4>
+                                <p className="text-gray-500">We'll get back to you as soon as possible.</p>
+                            </div>
+                        ) : (
+                        <form className="space-y-6" onSubmit={handleSubmit}>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label className="block text-sm font-semibold text-gray-700 mb-2">First Name</label>
-                                    <input type="text" className="input-field bg-gray-50" placeholder="John" />
+                                    <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} className="input-field bg-gray-50" placeholder="John" required />
                                 </div>
                                 <div>
                                     <label className="block text-sm font-semibold text-gray-700 mb-2">Last Name</label>
-                                    <input type="text" className="input-field bg-gray-50" placeholder="Doe" />
+                                    <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} className="input-field bg-gray-50" placeholder="Doe" required />
                                 </div>
                             </div>
 
                             <div>
                                 <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
-                                <input type="email" className="input-field bg-gray-50" placeholder="john@example.com" />
+                                <input type="email" name="email" value={formData.email} onChange={handleChange} className="input-field bg-gray-50" placeholder="john@example.com" required />
                             </div>
 
                             <div>
                                 <label className="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
-                                <input type="tel" className="input-field bg-gray-50" placeholder="+27 XX XXX XXXX" />
+                                <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="input-field bg-gray-50" placeholder="+27 XX XXX XXXX" />
                             </div>
 
                             <div>
                                 <label className="block text-sm font-semibold text-gray-700 mb-2">How can we help?</label>
-                                <textarea className="input-field bg-gray-50 min-h-[150px] resize-y" placeholder="Tell us what you need help with..."></textarea>
+                                <textarea name="message" value={formData.message} onChange={handleChange} className="input-field bg-gray-50 min-h-[150px] resize-y" placeholder="Tell us what you need help with..." required></textarea>
                             </div>
 
-                            <button type="submit" className="btn-primary w-full py-4 text-lg mt-4 shadow-primary-500/20">
-                                Send Message
+                            {error && <p className="text-red-500 text-sm">{error}</p>}
+                            <button type="submit" disabled={submitting} className="btn-primary w-full py-4 text-lg mt-4 shadow-primary-500/20 disabled:opacity-60">
+                                {submitting ? 'Sending...' : 'Send Message'}
                             </button>
                         </form>
+                        )}
                     </motion.div>
 
                 </div>

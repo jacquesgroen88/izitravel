@@ -1,6 +1,30 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { submitToWebhook } from '../../lib/webhook';
 
 export default function QuickQuote() {
+    const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', whatsapp: '', destination: '', travelMonth: '', budget: '', specialRequests: '' });
+    const [submitting, setSubmitting] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState('');
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
+        setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setSubmitting(true);
+        setError('');
+        try {
+            await submitToWebhook({ formType: 'quick_quote', ...formData });
+            setSubmitted(true);
+        } catch {
+            setError('Something went wrong. Please try again.');
+        } finally {
+            setSubmitting(false);
+        }
+    };
+
     return (
         <section id="quote" className="py-24 bg-primary-600 relative overflow-hidden">
             <div className="absolute inset-0 bg-black/10 mix-blend-multiply z-0"></div>
@@ -22,47 +46,55 @@ export default function QuickQuote() {
                     transition={{ duration: 0.6 }}
                     className="bg-white rounded-2xl p-8 md:p-10 shadow-2xl text-left"
                 >
-                    <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                    {submitted ? (
+                        <div className="py-12 text-center">
+                            <div className="text-green-500 text-5xl mb-4">&#10003;</div>
+                            <h3 className="text-2xl font-bold text-gray-900 mb-2">Quote Request Received!</h3>
+                            <p className="text-gray-500">We'll get back to you within 24 hours.</p>
+                        </div>
+                    ) : (
+                    <form className="space-y-6" onSubmit={handleSubmit}>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label className="block text-sm font-semibold text-gray-700 mb-2">First Name</label>
-                                <input type="text" className="input-field" placeholder="John" />
+                                <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} className="input-field" placeholder="John" required />
                             </div>
                             <div>
                                 <label className="block text-sm font-semibold text-gray-700 mb-2">Last Name</label>
-                                <input type="text" className="input-field" placeholder="Doe" />
+                                <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} className="input-field" placeholder="Doe" required />
                             </div>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
-                                <input type="email" className="input-field" placeholder="john@example.com" />
+                                <input type="email" name="email" value={formData.email} onChange={handleChange} className="input-field" placeholder="john@example.com" required />
                             </div>
                             <div>
                                 <label className="block text-sm font-semibold text-gray-700 mb-2">WhatsApp Number</label>
-                                <input type="tel" className="input-field" placeholder="+27 XX XXX XXXX" />
+                                <input type="tel" name="whatsapp" value={formData.whatsapp} onChange={handleChange} className="input-field" placeholder="+27 XX XXX XXXX" required />
                             </div>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div>
                                 <label className="block text-sm font-semibold text-gray-700 mb-2">Destination</label>
-                                <select className="input-field appearance-none bg-white">
+                                <select name="destination" value={formData.destination} onChange={handleChange} className="input-field appearance-none bg-white">
                                     <option value="">Select Destination</option>
                                     <option value="thailand">Thailand</option>
                                     <option value="mauritius">Mauritius</option>
                                     <option value="zanzibar">Zanzibar</option>
+                                    <option value="maldives">Maldives</option>
                                     <option value="other">Other / Not sure</option>
                                 </select>
                             </div>
                             <div>
                                 <label className="block text-sm font-semibold text-gray-700 mb-2">Travel Month</label>
-                                <input type="month" className="input-field" />
+                                <input type="month" name="travelMonth" value={formData.travelMonth} onChange={handleChange} className="input-field" />
                             </div>
                             <div>
                                 <label className="block text-sm font-semibold text-gray-700 mb-2">Budget per Person</label>
-                                <select className="input-field appearance-none bg-white">
+                                <select name="budget" value={formData.budget} onChange={handleChange} className="input-field appearance-none bg-white">
                                     <option value="">Select Budget</option>
                                     <option value="10k-15k">R10,000 - R15,000</option>
                                     <option value="15k-25k">R15,000 - R25,000</option>
@@ -73,16 +105,18 @@ export default function QuickQuote() {
 
                         <div>
                             <label className="block text-sm font-semibold text-gray-700 mb-2">Any special requests? (Optional)</label>
-                            <textarea className="input-field min-h-[100px] resize-y" placeholder="e.g. Honeymoon, dietary requirements, specific activities..." />
+                            <textarea name="specialRequests" value={formData.specialRequests} onChange={handleChange} className="input-field min-h-[100px] resize-y" placeholder="e.g. Honeymoon, dietary requirements, specific activities..." />
                         </div>
 
+                        {error && <p className="text-red-500 text-sm">{error}</p>}
                         <div className="pt-4">
-                            <button type="submit" className="btn-primary w-full py-4 text-lg">
-                                Submit Quote Request
+                            <button type="submit" disabled={submitting} className="btn-primary w-full py-4 text-lg disabled:opacity-60">
+                                {submitting ? 'Submitting...' : 'Submit Quote Request'}
                             </button>
                             <p className="text-center text-sm text-gray-500 mt-4">We usually respond within 24 hours.</p>
                         </div>
                     </form>
+                    )}
                 </motion.div>
             </div>
         </section>

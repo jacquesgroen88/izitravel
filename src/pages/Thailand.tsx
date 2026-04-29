@@ -1,10 +1,34 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Plane, CheckCircle2, Star, ChevronDown } from 'lucide-react';
 import WhyBookWithUs from '../components/home/WhyBookWithUs';
 import Testimonials from '../components/home/Testimonials';
 import CTASection from '../components/home/CTASection';
+import { submitToWebhook } from '../lib/webhook';
 
 export default function Thailand() {
+    const [formData, setFormData] = useState({ name: '', travelMonth: '', travellers: '', budget: '', phone: '', email: '' });
+    const [submitting, setSubmitting] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState('');
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
+        setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setSubmitting(true);
+        setError('');
+        try {
+            await submitToWebhook({ formType: 'thailand_quote', ...formData });
+            setSubmitted(true);
+        } catch {
+            setError('Something went wrong. Please try again.');
+        } finally {
+            setSubmitting(false);
+        }
+    };
+
     const faqs = [
         { q: 'Do packages include flights?', a: 'Yes, most of our Thailand packages include return flights from South Africa, though we can customize a land-only package if preferred.' },
         { q: 'Is Thailand safe to travel to?', a: 'Absolutely. Thailand is generally very safe for tourists. As with any international travel, standard precautions apply, but millions visit safely every year.' },
@@ -73,17 +97,25 @@ export default function Thailand() {
                                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Plan My Thailand Trip</h3>
                                 <p className="text-gray-500 mb-6 text-sm">Get a free, no-obligation custom quote.</p>
 
-                                <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                                    <div><input type="text" placeholder="Your Name" className="input-field" /></div>
-                                    <div className="grid grid-cols-2 gap-4">
-                                        <input type="month" className="input-field" />
-                                        <select className="input-field appearance-none px-2"><option>Travellers</option><option>1</option><option>2</option><option>3+</option></select>
+                                {submitted ? (
+                                    <div className="py-8 text-center">
+                                        <div className="text-green-500 text-4xl mb-3">&#10003;</div>
+                                        <p className="font-semibold text-gray-900">Thanks! We'll be in touch soon.</p>
                                     </div>
-                                    <select className="input-field appearance-none"><option>Budget Range (per person)</option><option>R15k - R20k</option><option>R20k - R30k</option><option>R30k+</option></select>
-                                    <div><input type="tel" placeholder="WhatsApp / Phone" className="input-field" /></div>
-                                    <div><input type="email" placeholder="Email Address" className="input-field" /></div>
-                                    <button type="submit" className="btn-primary w-full mt-2">Get My Thailand Quote</button>
+                                ) : (
+                                <form className="space-y-4" onSubmit={handleSubmit}>
+                                    <div><input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your Name" className="input-field" required /></div>
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <input type="month" name="travelMonth" value={formData.travelMonth} onChange={handleChange} className="input-field" />
+                                        <select name="travellers" value={formData.travellers} onChange={handleChange} className="input-field appearance-none px-2"><option value="">Travellers</option><option value="1">1</option><option value="2">2</option><option value="3+">3+</option></select>
+                                    </div>
+                                    <select name="budget" value={formData.budget} onChange={handleChange} className="input-field appearance-none"><option value="">Budget Range (per person)</option><option value="R15k-R20k">R15k - R20k</option><option value="R20k-R30k">R20k - R30k</option><option value="R30k+">R30k+</option></select>
+                                    <div><input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="WhatsApp / Phone" className="input-field" required /></div>
+                                    <div><input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email Address" className="input-field" required /></div>
+                                    {error && <p className="text-red-500 text-sm">{error}</p>}
+                                    <button type="submit" disabled={submitting} className="btn-primary w-full mt-2 disabled:opacity-60">{submitting ? 'Sending...' : 'Get My Thailand Quote'}</button>
                                 </form>
+                                )}
                             </div>
                         </motion.div>
                     </div>
