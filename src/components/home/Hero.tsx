@@ -6,7 +6,7 @@ const rotatingWords = ['Island Holiday', 'Honeymoon', 'Birthday Escape', 'Weddin
 
 export default function Hero() {
     const [wordIndex, setWordIndex] = useState(0);
-    const [formData, setFormData] = useState({ destination: '', travelMonth: '', budget: '', name: '', whatsapp: '', email: '', travellers: '' });
+    const [formData, setFormData] = useState({ destination: '', travelMonth: '', budget: '', firstName: '', lastName: '', whatsapp: '', email: '', travellers: '' });
     const [submitting, setSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState('');
@@ -170,9 +170,15 @@ export default function Hero() {
                                         </div>
                                     </div>
 
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                                        <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your Name" className="input-field" required />
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                                            <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="John" className="input-field" required />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                                            <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Doe" className="input-field" required />
+                                        </div>
                                     </div>
 
                                     <div>

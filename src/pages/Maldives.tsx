@@ -7,7 +7,7 @@ import CTASection from '../components/home/CTASection';
 import { submitToWebhook } from '../lib/webhook';
 
 export default function Maldives() {
-    const [formData, setFormData] = useState({ name: '', travelMonth: '', travellers: '', budget: '', phone: '', email: '' });
+    const [formData, setFormData] = useState({ firstName: '', lastName: '', travelMonth: '', travellers: '', budget: '', phone: '', email: '' });
     const [submitting, setSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState('');
@@ -83,7 +83,10 @@ export default function Maldives() {
                                     </div>
                                 ) : (
                                 <form className="space-y-4" onSubmit={handleSubmit}>
-                                    <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your Name" className="input-field border-gray-200" required />
+                                    <div className="grid grid-cols-2 gap-3">
+                                        <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" className="input-field border-gray-200" required />
+                                        <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Last Name" className="input-field border-gray-200" required />
+                                    </div>
                                     <div className="grid grid-cols-2 gap-4">
                                         <input type="month" name="travelMonth" value={formData.travelMonth} onChange={handleChange} className="input-field border-gray-200" />
                                         <select name="travellers" value={formData.travellers} onChange={handleChange} className="input-field appearance-none px-2 border-gray-200">

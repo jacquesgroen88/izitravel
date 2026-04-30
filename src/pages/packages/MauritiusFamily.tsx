@@ -5,7 +5,7 @@ import CTASection from '../../components/home/CTASection';
 import { submitToWebhook } from '../../lib/webhook';
 
 export default function MauritiusFamily() {
-    const [formData, setFormData] = useState({ name: '', whatsapp: '', email: '', travelMonth: '', travellers: '' });
+    const [formData, setFormData] = useState({ firstName: '', lastName: '', whatsapp: '', email: '', travelMonth: '', travellers: '' });
     const [submitting, setSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState('');
@@ -116,7 +116,10 @@ export default function MauritiusFamily() {
                                 </div>
                             ) : (
                             <form className="space-y-3" onSubmit={handleSubmit}>
-                                <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your Name" className="input-field border-gray-200 text-sm" required />
+                                <div className="grid grid-cols-2 gap-2">
+                                    <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" className="input-field border-gray-200 text-sm" required />
+                                    <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Last Name" className="input-field border-gray-200 text-sm" required />
+                                </div>
                                 <input type="tel" name="whatsapp" value={formData.whatsapp} onChange={handleChange} placeholder="WhatsApp Number" className="input-field border-gray-200 text-sm" required />
                                 <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email Address" className="input-field border-gray-200 text-sm" required />
                                 <input type="month" name="travelMonth" value={formData.travelMonth} onChange={handleChange} className="input-field border-gray-200 text-sm" />
