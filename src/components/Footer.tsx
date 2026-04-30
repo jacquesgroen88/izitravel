@@ -48,11 +48,11 @@ export default function Footer() {
                     <ul className="space-y-4 text-sm">
                         <li className="flex items-start gap-3">
                             <MapPin className="w-5 h-5 text-primary-500 shrink-0 mt-0.5" />
-                            <span>123 Travel Avenue, <br />Vaal Triangle, South Africa</span>
+                            <span>20 Fairbanks Street, <br />NW 7, Vanderbijlpark</span>
                         </li>
                         <li className="flex items-center gap-3">
                             <Phone className="w-5 h-5 text-primary-500 shrink-0" />
-                            <a href="tel:0161234567" className="hover:text-white transition-colors">016 123 4567</a>
+                            <a href="tel:0829672060" className="hover:text-white transition-colors">082 967 2060</a>
                         </li>
                         <li className="flex items-center gap-3">
                             <Mail className="w-5 h-5 text-primary-500 shrink-0" />

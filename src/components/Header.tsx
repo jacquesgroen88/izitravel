@@ -44,8 +44,8 @@ export default function Header() {
 
                 {/* Right CTA (desktop) */}
                 <div className="hidden md:flex items-center gap-4">
-                    <a href="tel:0161234567" className="hidden lg:flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-primary-600 transition-colors">
-                        <Phone className="w-4 h-4" /> 016 123 4567
+                    <a href="tel:0829672060" className="hidden lg:flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-primary-600 transition-colors">
+                        <Phone className="w-4 h-4" /> 082 967 2060
                     </a>
                     <a href="#quote" className="btn-primary py-2 px-5 text-sm h-10 shadow-primary-600/20">
                         Get a Quote
@@ -82,8 +82,8 @@ export default function Header() {
                             </Link>
                     ))}
                     <div className="pt-3 border-t border-gray-100 flex flex-col gap-3">
-                        <a href="tel:0161234567" className="flex items-center gap-2 text-sm font-semibold text-gray-700 px-4 py-3">
-                            <Phone className="w-4 h-4 text-primary-600" /> 016 123 4567
+                        <a href="tel:0829672060" className="flex items-center gap-2 text-sm font-semibold text-gray-700 px-4 py-3">
+                            <Phone className="w-4 h-4 text-primary-600" /> 082 967 2060
                         </a>
                         <a href="#quote" onClick={handleNavClick} className="btn-primary text-center">
                             Get a Quote

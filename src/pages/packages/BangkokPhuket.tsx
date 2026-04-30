@@ -152,7 +152,7 @@ export default function BangkokPhuket() {
                             )}
                             <div className="mt-4 flex items-center justify-center gap-2 text-sm text-gray-500">
                                 <Phone className="w-4 h-4" />
-                                <a href="tel:0161234567" className="hover:text-primary-600 font-semibold">016 123 4567</a>
+                                <a href="tel:0829672060" className="hover:text-primary-600 font-semibold">082 967 2060</a>
                             </div>
                         </div>
                     </div>
