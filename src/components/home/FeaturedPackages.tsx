@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 
 const packages = [
     {
-        id: 'pkg1',
-        title: 'Bangkok + Phuket Escape',
-        image: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=2000&auto=format&fit=crop',
+        id: 'pkg3',
+        title: 'Mauritius Family Holiday',
+        image: 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?q=80&w=2116&auto=format&fit=crop',
         duration: '7 Nights',
-        location: 'Thailand',
-        highlights: ['Flights Included', '4-Star Hotels', 'Phi Phi Island Tour'],
-        price: 'R18,500',
-        slug: '/packages/bangkok-phuket',
+        location: 'Mauritius',
+        highlights: ['Beachfront Resort', 'Kids Club Included', 'Flights & Transfers'],
+        price: 'R21,000',
+        slug: '/packages/mauritius-family',
     },
     {
         id: 'pkg2',
@@ -24,14 +24,14 @@ const packages = [
         slug: '/packages/romantic-zanzibar',
     },
     {
-        id: 'pkg3',
-        title: 'Mauritius Family Holiday',
-        image: 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?q=80&w=2116&auto=format&fit=crop',
+        id: 'pkg1',
+        title: 'Bangkok + Phuket Escape',
+        image: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=2000&auto=format&fit=crop',
         duration: '7 Nights',
-        location: 'Mauritius',
-        highlights: ['Beachfront Resort', 'Kids Club Included', 'Flights & Transfers'],
-        price: 'R21,000',
-        slug: '/packages/mauritius-family',
+        location: 'Thailand',
+        highlights: ['Flights Included', '4-Star Hotels', 'Phi Phi Island Tour'],
+        price: 'R18,500',
+        slug: '/packages/bangkok-phuket',
     },
     {
         id: 'pkg4',

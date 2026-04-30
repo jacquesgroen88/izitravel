@@ -4,13 +4,6 @@ import { Link } from 'react-router-dom';
 
 const destinations = [
     {
-        id: 'thailand',
-        name: 'Thailand',
-        image: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=2039&auto=format&fit=crop',
-        description: 'Vibrant cities, stunning islands, and rich culture. Perfect for couples and families.',
-        path: '/thailand'
-    },
-    {
         id: 'mauritius',
         name: 'Mauritius',
         image: 'https://images.unsplash.com/photo-1548574505-5e239809ee19?q=80&w=2000&auto=format&fit=crop',
@@ -23,6 +16,13 @@ const destinations = [
         image: 'https://images.unsplash.com/photo-1586611292717-f828b167408c?q=80&w=2000&auto=format&fit=crop',
         description: 'Exotic beaches, romantic sunsets, and historic Stone Town explorations.',
         path: '/zanzibar'
+    },
+    {
+        id: 'thailand',
+        name: 'Thailand',
+        image: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=2039&auto=format&fit=crop',
+        description: 'Vibrant cities, stunning islands, and rich culture. Perfect for couples and families.',
+        path: '/thailand'
     },
     {
         id: 'maldives',
