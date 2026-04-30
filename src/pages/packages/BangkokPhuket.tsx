@@ -11,7 +11,7 @@ export default function BangkokPhuket() {
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState('');
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
         setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
     const handleSubmit = async (e: React.FormEvent) => {
