@@ -80,13 +80,13 @@ export default function Contact() {
                                 </div>
                             </a>
 
-                            <a href="mailto:hello@vaaltravel.co.za" className="flex items-center gap-6 p-6 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+                            <a href="mailto:terrib@izitravel.co.za" className="flex items-center gap-6 p-6 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
                                 <div className="w-14 h-14 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
                                     <Mail className="w-6 h-6" />
                                 </div>
                                 <div>
                                     <div className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">Email Us</div>
-                                    <div className="text-xl font-bold text-gray-900">hello@vaaltravel.co.za</div>
+                                    <div className="text-xl font-bold text-gray-900">terrib@izitravel.co.za</div>
                                 </div>
                             </a>
 
