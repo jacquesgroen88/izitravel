@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Facebook, Twitter, Instagram, Phone, Mail, MapPin } from 'lucide-react';
+import { Facebook, Instagram, Phone, Mail, MapPin } from 'lucide-react';
 import logoImg from './logo/izilogo.jpg';
 
 export default function Footer() {
@@ -15,9 +15,8 @@ export default function Footer() {
                         Helping travellers in the Vaal Triangle book unforgettable trips to Thailand, Mauritius, and Zanzibar. expert travel planning, best deals, and personal support.
                     </p>
                     <div className="flex gap-4 pt-4">
-                        <a href="#" className="hover:text-primary-500 transition-colors"><Facebook className="w-5 h-5" /></a>
-                        <a href="#" className="hover:text-primary-500 transition-colors"><Twitter className="w-5 h-5" /></a>
-                        <a href="#" className="hover:text-primary-500 transition-colors"><Instagram className="w-5 h-5" /></a>
+                        <a href="https://www.facebook.com/profile.php?id=100054564034399" target="_blank" rel="noopener noreferrer" className="hover:text-primary-500 transition-colors"><Facebook className="w-5 h-5" /></a>
+                        <a href="https://www.instagram.com/izi_travel_and_tours/" target="_blank" rel="noopener noreferrer" className="hover:text-primary-500 transition-colors"><Instagram className="w-5 h-5" /></a>
                     </div>
                 </div>
 
