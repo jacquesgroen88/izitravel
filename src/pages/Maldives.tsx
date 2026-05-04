@@ -71,7 +71,7 @@ export default function Maldives() {
                             </motion.div>
                         </div>
 
-                        <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
+                        <motion.div id="quote" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
                             className="w-full lg:w-[450px]">
                             <div className="bg-white rounded-2xl shadow-2xl p-8">
                                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Plan My Maldives Holiday</h3>

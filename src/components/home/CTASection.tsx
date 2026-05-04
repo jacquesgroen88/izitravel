@@ -17,11 +17,11 @@ export default function CTASection() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <a href="#quote" className="btn-primary py-4 px-8 text-lg w-full sm:w-auto shadow-primary-500/20">
+                        <a href="/#quote" className="btn-primary py-4 px-8 text-lg w-full sm:w-auto shadow-primary-500/20">
                             Get a Quote <ArrowRight className="w-5 h-5" />
                         </a>
                         <a
-                            href="https://wa.me/27821234567"
+                            href="https://wa.me/27829672060"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="bg-[#25D366] hover:bg-[#1ebe5d] text-white font-semibold py-4 px-8 rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] w-full sm:w-auto text-lg"

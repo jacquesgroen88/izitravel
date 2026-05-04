@@ -11,6 +11,8 @@ import RomanticZanzibar from './pages/packages/RomanticZanzibar';
 import MauritiusFamily from './pages/packages/MauritiusFamily';
 import MaldivesOverwater from './pages/packages/MaldivesOverwater';
 import ThankYou from './pages/ThankYou';
+import Terms from './pages/Terms';
+import Privacy from './pages/Privacy';
 
 function App() {
     return (
@@ -28,6 +30,8 @@ function App() {
                     <Route path="packages/mauritius-family" element={<MauritiusFamily />} />
                     <Route path="packages/maldives-overwater" element={<MaldivesOverwater />} />
                     <Route path="thank-you/:slug" element={<ThankYou />} />
+                    <Route path="terms" element={<Terms />} />
+                    <Route path="privacy" element={<Privacy />} />
                 </Route>
             </Routes>
         </Router>

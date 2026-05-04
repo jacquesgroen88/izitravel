@@ -31,7 +31,7 @@ export default function Header() {
                     <Link to="/" className={`text-sm font-semibold transition-colors ${isActive('/') ? 'text-primary-600' : 'text-gray-600 hover:text-primary-600'}`}>Home</Link>
                     {navLinks.map((link) => (
                         link.path.startsWith('/#')
-                            ? <a key={link.name} href={pathname !== '/' ? `/${link.path}` : link.path}
+                            ? <a key={link.name} href={link.path}
                                 className="text-sm font-semibold transition-colors text-gray-600 hover:text-primary-600">
                                 {link.name}
                             </a>
@@ -47,7 +47,7 @@ export default function Header() {
                     <a href="tel:0829672060" className="hidden lg:flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-primary-600 transition-colors">
                         <Phone className="w-4 h-4" /> 082 967 2060
                     </a>
-                    <a href="#quote" className="btn-primary py-2 px-5 text-sm h-10 shadow-primary-600/20">
+                    <a href="/#quote" className="btn-primary py-2 px-5 text-sm h-10 shadow-primary-600/20">
                         Get a Quote
                     </a>
                 </div>
@@ -71,7 +71,7 @@ export default function Header() {
                     </Link>
                     {navLinks.map((link) => (
                         link.path.startsWith('/#')
-                            ? <a key={link.name} href={pathname !== '/' ? `/${link.path}` : link.path}
+                            ? <a key={link.name} href={link.path}
                                 onClick={handleNavClick}
                                 className="block py-3 px-4 rounded-xl text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors">
                                 {link.name}
@@ -85,7 +85,7 @@ export default function Header() {
                         <a href="tel:0829672060" className="flex items-center gap-2 text-sm font-semibold text-gray-700 px-4 py-3">
                             <Phone className="w-4 h-4 text-primary-600" /> 082 967 2060
                         </a>
-                        <a href="#quote" onClick={handleNavClick} className="btn-primary text-center">
+                        <a href="/#quote" onClick={handleNavClick} className="btn-primary text-center">
                             Get a Quote
                         </a>
                     </div>

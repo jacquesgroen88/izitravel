@@ -24,9 +24,10 @@ export default function Footer() {
                 <div>
                     <h4 className="text-white font-semibold mb-6">Destinations</h4>
                     <ul className="space-y-3 text-sm">
-                        <li><Link to="/thailand" className="hover:text-primary-500 transition-colors">Thailand</Link></li>
                         <li><Link to="/mauritius" className="hover:text-primary-500 transition-colors">Mauritius</Link></li>
                         <li><Link to="/zanzibar" className="hover:text-primary-500 transition-colors">Zanzibar</Link></li>
+                        <li><Link to="/thailand" className="hover:text-primary-500 transition-colors">Thailand</Link></li>
+                        <li><Link to="/maldives" className="hover:text-primary-500 transition-colors">Maldives</Link></li>
                     </ul>
                 </div>
 
@@ -36,8 +37,8 @@ export default function Footer() {
                     <ul className="space-y-3 text-sm">
                         <li><a href="/#about" className="hover:text-primary-500 transition-colors">About Us</a></li>
                         <li><Link to="/contact" className="hover:text-primary-500 transition-colors">Contact</Link></li>
-                        <li><a href="/terms" className="hover:text-primary-500 transition-colors">Terms of Service</a></li>
-                        <li><a href="/privacy" className="hover:text-primary-500 transition-colors">Privacy Policy</a></li>
+                        <li><Link to="/terms" className="hover:text-primary-500 transition-colors">Terms of Service</Link></li>
+                        <li><Link to="/privacy" className="hover:text-primary-500 transition-colors">Privacy Policy</Link></li>
                     </ul>
                 </div>
 

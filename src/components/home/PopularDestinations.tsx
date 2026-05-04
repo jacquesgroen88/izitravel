@@ -45,10 +45,10 @@ export default function PopularDestinations() {
                             Discover our handpicked tropical escapes offering breathtaking beaches, luxury resorts, and cultural adventures.
                         </p>
                     </div>
-                    <Link to="/#packages" className="text-primary-600 font-semibold hover:text-primary-700 flex items-center justify-center lg:justify-start gap-2 group shrink-0">
+                    <a href="/#packages" className="text-primary-600 font-semibold hover:text-primary-700 flex items-center justify-center lg:justify-start gap-2 group shrink-0">
                         View All Packages
                         <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-                    </Link>
+                    </a>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
