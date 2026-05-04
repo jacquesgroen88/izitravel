@@ -7,7 +7,7 @@ import { submitToWebhook } from '../../lib/webhook';
 
 export default function BangkokPhuket() {
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({ firstName: '', lastName: '', whatsapp: '', email: '', travelMonth: '', travellers: '' });
+    const [formData, setFormData] = useState({ firstName: '', lastName: '', whatsapp: '', email: '', travelMonth: '', travelYear: '', travellers: '' });
     const [submitting, setSubmitting] = useState(false);
     const [error, setError] = useState('');
 
@@ -130,7 +130,33 @@ export default function BangkokPhuket() {
                                 </div>
                                 <input type="tel" name="whatsapp" value={formData.whatsapp} onChange={handleChange} placeholder="WhatsApp Number" className="input-field border-gray-200 text-sm" required />
                                 <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email Address" className="input-field border-gray-200 text-sm" required />
-                                <input type="month" name="travelMonth" value={formData.travelMonth} onChange={handleChange} className="input-field border-gray-200 text-sm" />
+                                <div>
+                                    <p className="text-xs text-gray-500 mb-1 font-medium">When do you want to travel?</p>
+                                    <div className="grid grid-cols-2 gap-2">
+                                        <select name="travelMonth" value={formData.travelMonth} onChange={handleChange} className="input-field appearance-none border-gray-200 text-sm">
+                                            <option value="">Month</option>
+                                            <option value="January">January</option>
+                                            <option value="February">February</option>
+                                            <option value="March">March</option>
+                                            <option value="April">April</option>
+                                            <option value="May">May</option>
+                                            <option value="June">June</option>
+                                            <option value="July">July</option>
+                                            <option value="August">August</option>
+                                            <option value="September">September</option>
+                                            <option value="October">October</option>
+                                            <option value="November">November</option>
+                                            <option value="December">December</option>
+                                        </select>
+                                        <select name="travelYear" value={formData.travelYear} onChange={handleChange} className="input-field appearance-none border-gray-200 text-sm">
+                                            <option value="">Year</option>
+                                            <option value="2026">2026</option>
+                                            <option value="2027">2027</option>
+                                            <option value="2028">2028</option>
+                                            <option value="2029">2029</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <select name="travellers" value={formData.travellers} onChange={handleChange} className="input-field appearance-none border-gray-200 text-sm">
                                     <option value="">Number of Travellers</option>
                                     <option value="1">1</option>

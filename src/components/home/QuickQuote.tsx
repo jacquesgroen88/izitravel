@@ -5,7 +5,7 @@ import { submitToWebhook } from '../../lib/webhook';
 
 export default function QuickQuote() {
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', whatsapp: '', destination: '', travelMonth: '', budget: '', travellers: '', specialRequests: '' });
+    const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', whatsapp: '', destination: '', travelMonth: '', travelYear: '', budget: '', travellers: '', specialRequests: '' });
     const [submitting, setSubmitting] = useState(false);
     const [error, setError] = useState('');
 
@@ -93,8 +93,31 @@ export default function QuickQuote() {
                                 </select>
                             </div>
                             <div>
-                                <label className="block text-sm font-semibold text-gray-700 mb-2">Travel Month</label>
-                                <input type="month" name="travelMonth" value={formData.travelMonth} onChange={handleChange} className="input-field" />
+                                <label className="block text-sm font-semibold text-gray-700 mb-2">When do you want to travel?</label>
+                                <div className="grid grid-cols-2 gap-2">
+                                    <select name="travelMonth" value={formData.travelMonth} onChange={handleChange} className="input-field appearance-none bg-white">
+                                        <option value="">Month</option>
+                                        <option value="January">January</option>
+                                        <option value="February">February</option>
+                                        <option value="March">March</option>
+                                        <option value="April">April</option>
+                                        <option value="May">May</option>
+                                        <option value="June">June</option>
+                                        <option value="July">July</option>
+                                        <option value="August">August</option>
+                                        <option value="September">September</option>
+                                        <option value="October">October</option>
+                                        <option value="November">November</option>
+                                        <option value="December">December</option>
+                                    </select>
+                                    <select name="travelYear" value={formData.travelYear} onChange={handleChange} className="input-field appearance-none bg-white">
+                                        <option value="">Year</option>
+                                        <option value="2026">2026</option>
+                                        <option value="2027">2027</option>
+                                        <option value="2028">2028</option>
+                                        <option value="2029">2029</option>
+                                    </select>
+                                </div>
                             </div>
                             <div>
                                 <label className="block text-sm font-semibold text-gray-700 mb-2">Budget per Person</label>
