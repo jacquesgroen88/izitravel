@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, Star, ChevronDown } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import WhyBookWithUs from '../components/home/WhyBookWithUs';
 import Testimonials from '../components/home/Testimonials';
 import CTASection from '../components/home/CTASection';
 import { submitToWebhook } from '../lib/webhook';
 
 export default function Maldives() {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({ firstName: '', lastName: '', travelMonth: '', travellers: '', budget: '', phone: '', email: '' });
     const [submitting, setSubmitting] = useState(false);
-    const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState('');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
@@ -21,10 +22,9 @@ export default function Maldives() {
         setError('');
         try {
             await submitToWebhook({ formType: 'maldives_quote', ...formData });
-            setSubmitted(true);
+            navigate('/thank-you/maldives');
         } catch {
             setError('Something went wrong. Please try again.');
-        } finally {
             setSubmitting(false);
         }
     };
@@ -76,12 +76,6 @@ export default function Maldives() {
                             <div className="bg-white rounded-2xl shadow-2xl p-8">
                                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Plan My Maldives Holiday</h3>
                                 <p className="text-gray-500 mb-6 text-sm">Get a free, no-obligation custom quote.</p>
-                                {submitted ? (
-                                    <div className="py-8 text-center">
-                                        <div className="text-green-500 text-4xl mb-3">&#10003;</div>
-                                        <p className="font-semibold text-gray-900">Thanks! We'll be in touch soon.</p>
-                                    </div>
-                                ) : (
                                 <form className="space-y-4" onSubmit={handleSubmit}>
                                     <div className="grid grid-cols-2 gap-3">
                                         <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" className="input-field border-gray-200" required />
@@ -102,7 +96,6 @@ export default function Maldives() {
                                     {error && <p className="text-red-500 text-sm">{error}</p>}
                                     <button type="submit" disabled={submitting} className="btn-primary w-full mt-2 disabled:opacity-60">{submitting ? 'Sending...' : 'Get My Maldives Quote'}</button>
                                 </form>
-                                )}
                             </div>
                         </motion.div>
                     </div>

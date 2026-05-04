@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { submitToWebhook } from '../../lib/webhook';
 
 const rotatingWords = ['Island Holiday', 'Honeymoon', 'Birthday Escape', 'Wedding Getaway'];
 
 export default function Hero() {
+    const navigate = useNavigate();
     const [wordIndex, setWordIndex] = useState(0);
     const [formData, setFormData] = useState({ destination: '', travelMonth: '', budget: '', firstName: '', lastName: '', whatsapp: '', email: '', travellers: '' });
     const [submitting, setSubmitting] = useState(false);
-    const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState('');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
@@ -20,10 +21,9 @@ export default function Hero() {
         setError('');
         try {
             await submitToWebhook({ formType: 'hero_quick_enquiry', ...formData });
-            setSubmitted(true);
+            navigate('/thank-you/general');
         } catch {
             setError('Something went wrong. Please try again.');
-        } finally {
             setSubmitting(false);
         }
     };
@@ -121,12 +121,6 @@ export default function Hero() {
                                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Quick Enquiry</h3>
                                 <p className="text-gray-500 mb-6 text-sm">Let our local experts craft your perfect escape.</p>
 
-                                {submitted ? (
-                                    <div className="py-8 text-center">
-                                        <div className="text-green-600 text-4xl mb-3">&#10003;</div>
-                                        <p className="font-semibold text-gray-900">Thanks! We'll be in touch soon.</p>
-                                    </div>
-                                ) : (
                                 <form className="space-y-4" onSubmit={handleSubmit}>
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-1">Destination</label>
@@ -208,7 +202,6 @@ export default function Hero() {
                                         {submitting ? 'Sending...' : 'Request Pricing'}
                                     </button>
                                 </form>
-                                )}
                             </div>
                         </div>
                     </motion.div>

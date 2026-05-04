@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, XCircle, Star, Phone, Clock, MapPin } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import CTASection from '../../components/home/CTASection';
 import { submitToWebhook } from '../../lib/webhook';
 
 export default function MauritiusFamily() {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({ firstName: '', lastName: '', whatsapp: '', email: '', travelMonth: '', travellers: '' });
     const [submitting, setSubmitting] = useState(false);
-    const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState('');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
@@ -19,10 +20,9 @@ export default function MauritiusFamily() {
         setError('');
         try {
             await submitToWebhook({ formType: 'package_mauritius_family', ...formData });
-            setSubmitted(true);
+            navigate('/thank-you/mauritius-family');
         } catch {
             setError('Something went wrong. Please try again.');
-        } finally {
             setSubmitting(false);
         }
     };
@@ -109,12 +109,6 @@ export default function MauritiusFamily() {
                                 <div className="text-sm text-gray-500 mt-1">Half-board • 7 nights</div>
                                 <div className="mt-2 text-xs font-bold text-orange-600 bg-orange-50 rounded-full px-3 py-1 inline-block">🏖️ Family favourite — book early</div>
                             </div>
-                            {submitted ? (
-                                <div className="py-6 text-center">
-                                    <div className="text-green-500 text-4xl mb-3">&#10003;</div>
-                                    <p className="font-semibold text-gray-900">Thanks! We'll be in touch soon.</p>
-                                </div>
-                            ) : (
                             <form className="space-y-3" onSubmit={handleSubmit}>
                                 <div className="grid grid-cols-2 gap-2">
                                     <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" className="input-field border-gray-200 text-sm" required />
@@ -134,7 +128,6 @@ export default function MauritiusFamily() {
                                 {error && <p className="text-red-500 text-xs">{error}</p>}
                                 <button type="submit" disabled={submitting} className="btn-primary w-full disabled:opacity-60">{submitting ? 'Sending...' : 'Book This Package'}</button>
                             </form>
-                            )}
                             <div className="mt-4 flex items-center justify-center gap-2 text-sm text-gray-500">
                                 <Phone className="w-4 h-4" />
                                 <a href="tel:0829672060" className="hover:text-primary-600 font-semibold">082 967 2060</a>

@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { submitToWebhook } from '../../lib/webhook';
 
 export default function QuickQuote() {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', whatsapp: '', destination: '', travelMonth: '', budget: '', travellers: '', specialRequests: '' });
     const [submitting, setSubmitting] = useState(false);
-    const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState('');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
@@ -17,10 +18,9 @@ export default function QuickQuote() {
         setError('');
         try {
             await submitToWebhook({ formType: 'quick_quote', ...formData });
-            setSubmitted(true);
+            navigate('/thank-you/quote');
         } catch {
             setError('Something went wrong. Please try again.');
-        } finally {
             setSubmitting(false);
         }
     };
@@ -46,13 +46,6 @@ export default function QuickQuote() {
                     transition={{ duration: 0.6 }}
                     className="bg-white rounded-2xl p-8 md:p-10 shadow-2xl text-left"
                 >
-                    {submitted ? (
-                        <div className="py-12 text-center">
-                            <div className="text-green-500 text-5xl mb-4">&#10003;</div>
-                            <h3 className="text-2xl font-bold text-gray-900 mb-2">Quote Request Received!</h3>
-                            <p className="text-gray-500">We'll get back to you within 24 hours.</p>
-                        </div>
-                    ) : (
                     <form className="space-y-6" onSubmit={handleSubmit}>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
@@ -127,7 +120,6 @@ export default function QuickQuote() {
                             <p className="text-center text-sm text-gray-500 mt-4">We usually respond within 24 hours.</p>
                         </div>
                     </form>
-                    )}
                 </motion.div>
             </div>
         </section>

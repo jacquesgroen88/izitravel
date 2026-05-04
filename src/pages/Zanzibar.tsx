@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Plane, CheckCircle2, Star, ChevronDown } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import WhyBookWithUs from '../components/home/WhyBookWithUs';
 import Testimonials from '../components/home/Testimonials';
 import CTASection from '../components/home/CTASection';
 import { submitToWebhook } from '../lib/webhook';
 
 export default function Zanzibar() {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({ firstName: '', lastName: '', travelMonth: '', travellers: '', budget: '', phone: '', email: '' });
     const [submitting, setSubmitting] = useState(false);
-    const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState('');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
@@ -21,10 +22,9 @@ export default function Zanzibar() {
         setError('');
         try {
             await submitToWebhook({ formType: 'zanzibar_quote', ...formData });
-            setSubmitted(true);
+            navigate('/thank-you/zanzibar');
         } catch {
             setError('Something went wrong. Please try again.');
-        } finally {
             setSubmitting(false);
         }
     };
@@ -97,12 +97,6 @@ export default function Zanzibar() {
                                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Plan My Zanzibar Holiday</h3>
                                 <p className="text-gray-500 mb-6 text-sm">Let our specialists craft your exotic escape.</p>
 
-                                {submitted ? (
-                                    <div className="py-8 text-center">
-                                        <div className="text-green-500 text-4xl mb-3">&#10003;</div>
-                                        <p className="font-semibold text-gray-900">Thanks! We'll be in touch soon.</p>
-                                    </div>
-                                ) : (
                                 <form className="space-y-4" onSubmit={handleSubmit}>
                                     <div className="grid grid-cols-2 gap-3">
                                         <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" className="input-field border-gray-200" required />
@@ -118,7 +112,6 @@ export default function Zanzibar() {
                                     {error && <p className="text-red-500 text-sm">{error}</p>}
                                     <button type="submit" disabled={submitting} className="btn-primary w-full mt-2 shadow-primary-500/30 disabled:opacity-60">{submitting ? 'Sending...' : 'Get My Zanzibar Quote'}</button>
                                 </form>
-                                )}
                             </div>
                         </motion.div>
                     </div>

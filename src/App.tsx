@@ -10,6 +10,7 @@ import BangkokPhuket from './pages/packages/BangkokPhuket';
 import RomanticZanzibar from './pages/packages/RomanticZanzibar';
 import MauritiusFamily from './pages/packages/MauritiusFamily';
 import MaldivesOverwater from './pages/packages/MaldivesOverwater';
+import ThankYou from './pages/ThankYou';
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
                     <Route path="packages/romantic-zanzibar" element={<RomanticZanzibar />} />
                     <Route path="packages/mauritius-family" element={<MauritiusFamily />} />
                     <Route path="packages/maldives-overwater" element={<MaldivesOverwater />} />
+                    <Route path="thank-you/:slug" element={<ThankYou />} />
                 </Route>
             </Routes>
         </Router>
