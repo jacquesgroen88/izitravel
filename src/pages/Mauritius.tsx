@@ -183,7 +183,7 @@ export default function Mauritius() {
                                 <div className="p-8 flex-grow flex flex-col">
                                     <h3 className="text-2xl font-bold mb-2 text-gray-900">{pkg.title}</h3>
                                     <p className="text-primary-600 font-semibold mb-6 flex items-center gap-2"><CheckCircle2 className="w-5 h-5" /> {pkg.inc} • {pkg.nights}</p>
-                                    <button className="btn-secondary transition-all w-full mt-auto group-hover:border-primary-500 group-hover:text-primary-600">Check Availability</button>
+                                    <a href="#quote" className="btn-secondary transition-all w-full mt-auto text-center block group-hover:border-primary-500 group-hover:text-primary-600">Check Availability</a>
                                 </div>
                             </div>
                         ))}

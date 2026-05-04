@@ -181,7 +181,7 @@ export default function Thailand() {
                                 <div className="p-6 flex-grow flex flex-col">
                                     <h3 className="text-xl font-bold mb-2 text-gray-900">{pkg.title}</h3>
                                     <p className="text-gray-500 text-sm mb-6">{pkg.nights} | {pkg.inc}</p>
-                                    <button className="btn-secondary w-full mt-auto">Check Availability</button>
+                                    <a href="#quote" className="btn-secondary w-full mt-auto text-center block">Check Availability</a>
                                 </div>
                             </div>
                         ))}
