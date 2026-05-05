@@ -7,7 +7,7 @@ import { submitToWebhook } from '../../lib/webhook';
 
 export default function BangkokPhuket() {
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({ firstName: '', lastName: '', whatsapp: '', email: '', travelMonth: '', travelYear: '', travellers: '' });
+    const [formData, setFormData] = useState({ firstName: '', lastName: '', phone: '', email: '', travelMonth: '', travelYear: '', travellers: '' });
     const [submitting, setSubmitting] = useState(false);
     const [error, setError] = useState('');
 
@@ -128,7 +128,7 @@ export default function BangkokPhuket() {
                                     <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" className="input-field border-gray-200 text-sm" required />
                                     <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Last Name" className="input-field border-gray-200 text-sm" required />
                                 </div>
-                                <input type="tel" name="whatsapp" value={formData.whatsapp} onChange={handleChange} placeholder="WhatsApp Number" className="input-field border-gray-200 text-sm" required />
+                                <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="WhatsApp / Phone" className="input-field border-gray-200 text-sm" required />
                                 <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email Address" className="input-field border-gray-200 text-sm" required />
                                 <div>
                                     <p className="text-xs text-gray-500 mb-1 font-medium">When do you want to travel?</p>

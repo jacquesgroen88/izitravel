@@ -5,7 +5,7 @@ import { submitToWebhook } from '../../lib/webhook';
 
 export default function QuickQuote() {
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', whatsapp: '', destination: '', travelMonth: '', travelYear: '', budget: '', travellers: '', specialRequests: '' });
+    const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', phone: '', destination: '', travelMonth: '', travelYear: '', budget: '', travellers: '', specialRequests: '' });
     const [submitting, setSubmitting] = useState(false);
     const [error, setError] = useState('');
 
@@ -65,7 +65,7 @@ export default function QuickQuote() {
                             </div>
                             <div>
                                 <label className="block text-sm font-semibold text-gray-700 mb-2">WhatsApp Number</label>
-                                <input type="tel" name="whatsapp" value={formData.whatsapp} onChange={handleChange} className="input-field" placeholder="+27 XX XXX XXXX" required />
+                                <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="input-field" placeholder="+27 XX XXX XXXX" required />
                             </div>
                         </div>
 

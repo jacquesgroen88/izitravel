@@ -8,7 +8,7 @@ const rotatingWords = ['Island Holiday', 'Honeymoon', 'Birthday Escape', 'Weddin
 export default function Hero() {
     const navigate = useNavigate();
     const [wordIndex, setWordIndex] = useState(0);
-    const [formData, setFormData] = useState({ destination: '', travelMonth: '', travelYear: '', budget: '', firstName: '', lastName: '', whatsapp: '', email: '', travellers: '' });
+    const [formData, setFormData] = useState({ destination: '', travelMonth: '', travelYear: '', budget: '', firstName: '', lastName: '', phone: '', email: '', travellers: '' });
     const [submitting, setSubmitting] = useState(false);
     const [error, setError] = useState('');
 
@@ -184,7 +184,7 @@ export default function Hero() {
 
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-1">WhatsApp Number</label>
-                                        <input type="tel" name="whatsapp" value={formData.whatsapp} onChange={handleChange} placeholder="+27 XX XXX XXXX" className="input-field" required />
+                                        <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="+27 XX XXX XXXX" className="input-field" required />
                                     </div>
 
                                     <div>
