@@ -105,6 +105,7 @@ export default function MauritiusFamily() {
                     <div className="lg:col-span-1">
                         <div className="sticky top-24 bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
                             <div className="text-center mb-6">
+                                <div className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-1">From</div>
                                 <div className="text-3xl font-extrabold text-primary-600">R21,000 <span className="text-base font-normal text-gray-500">pp</span></div>
                                 <div className="text-sm text-gray-500 mt-1">Half-board • 7 nights</div>
                                 <div className="mt-2 text-xs font-bold text-orange-600 bg-orange-50 rounded-full px-3 py-1 inline-block">🏖️ Family favourite — book early</div>
