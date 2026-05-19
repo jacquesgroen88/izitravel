@@ -70,7 +70,7 @@ export default function RomanticZanzibar() {
                             <h2 className="text-3xl font-bold mb-6 text-gray-900">Your Itinerary</h2>
                             <div className="space-y-4">
                                 {[
-                                    { day: 'Day 1', title: 'Arrival in Zanzibar', desc: 'Fly from Johannesburg via Dar es Salaam. Transfer to your beachfront resort on Nungwi Beach. Welcome champagne.' },
+                                    { day: 'Day 1', title: 'Arrival in Zanzibar', desc: 'Fly from Johannesburg directly into Zanzibar. Transfer to your beachfront resort on Nungwi Beach. Welcome champagne.' },
                                     { day: 'Day 2', title: 'Stone Town Exploration', desc: 'UNESCO World Heritage guided tour of the historic Stone Town. Spice market visit. Rooftop sundowners.' },
                                     { day: 'Day 3', title: 'Snorkelling & Reef', desc: 'Morning snorkelling excursion at Mnemba Atoll coral reef. Afternoon beach lounging and spa.' },
                                     { day: 'Day 4', title: 'Sunset Dhow Cruise', desc: 'Romantic private dhow cruise at sunset. Fresh seafood dinner on the beach under the stars.' },
