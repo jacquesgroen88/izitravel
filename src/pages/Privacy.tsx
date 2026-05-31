@@ -57,7 +57,7 @@ export default function Privacy() {
 
                         <div>
                             <h2 className="text-2xl font-bold text-gray-900 mb-3">8. Contact Us</h2>
-                            <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:terrib@izitravel.co.za" className="text-primary-600 hover:underline">terrib@izitravel.co.za</a> or call <a href="tel:0829672060" className="text-primary-600 hover:underline">082 967 2060</a>.</p>
+                            <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:terrib@izitravel.co.za" className="text-primary-600 hover:underline">terrib@izitravel.co.za</a> or call <a href="tel:0608066589" className="text-primary-600 hover:underline">060 806 6589</a>.</p>
                         </div>
 
                         <div className="pt-4 border-t border-gray-100">

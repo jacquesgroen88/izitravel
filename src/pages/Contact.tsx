@@ -60,17 +60,17 @@ export default function Contact() {
                         </div>
 
                         <div className="space-y-6">
-                            <a href="tel:0829672060" className="flex items-center gap-6 p-6 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+                            <a href="tel:0608066589" className="flex items-center gap-6 p-6 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
                                 <div className="w-14 h-14 bg-primary-50 text-primary-600 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-primary-600 group-hover:text-white transition-colors duration-300">
                                     <Phone className="w-6 h-6" />
                                 </div>
                                 <div>
                                     <div className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">Call Us</div>
-                                    <div className="text-2xl font-bold text-gray-900">082 967 2060</div>
+                                    <div className="text-2xl font-bold text-gray-900">060 806 6589</div>
                                 </div>
                             </a>
 
-                            <a href="https://wa.me/27829672060" target="_blank" rel="noopener noreferrer" className="flex items-center gap-6 p-6 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+                            <a href="https://wa.me/27608066589" target="_blank" rel="noopener noreferrer" className="flex items-center gap-6 p-6 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
                                 <div className="w-14 h-14 bg-[#25D366]/10 text-[#25D366] rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#25D366] group-hover:text-white transition-colors duration-300">
                                     <MessageCircle className="w-6 h-6" />
                                 </div>

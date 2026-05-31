@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 
-const PHONE = '27829672060';
+const PHONE = '27608066589';
 
 const PAGE_MESSAGES: Record<string, string> = {
     '/': 'Hi, I would like to get more information on your holiday packages. Can you help me?',

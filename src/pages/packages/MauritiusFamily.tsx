@@ -157,7 +157,7 @@ export default function MauritiusFamily() {
                             </form>
                             <div className="mt-4 flex items-center justify-center gap-2 text-sm text-gray-500">
                                 <Phone className="w-4 h-4" />
-                                <a href="tel:0829672060" className="hover:text-primary-600 font-semibold">082 967 2060</a>
+                                <a href="tel:0608066589" className="hover:text-primary-600 font-semibold">060 806 6589</a>
                             </div>
                         </div>
                     </div>

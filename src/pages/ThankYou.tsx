@@ -98,7 +98,7 @@ export default function ThankYou() {
     const { slug } = useParams<{ slug: string }>();
     const content = (slug && PAGE_CONTENT[slug]) ? PAGE_CONTENT[slug] : PAGE_CONTENT['general'];
     const waMessage = (slug && WHATSAPP_MESSAGES[slug]) ? WHATSAPP_MESSAGES[slug] : DEFAULT_WA;
-    const waUrl = `https://wa.me/27829672060?text=${encodeURIComponent(waMessage)}`;
+    const waUrl = `https://wa.me/27608066589?text=${encodeURIComponent(waMessage)}`;
 
     const otherPackages = [
         { label: 'Mauritius Family Holiday', path: '/packages/mauritius-family', emoji: '🏖️' },
@@ -176,11 +176,11 @@ export default function ThankYou() {
                         Chat on WhatsApp
                     </a>
                     <a
-                        href="tel:0829672060"
+                        href="tel:0608066589"
                         className="flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-semibold bg-white text-gray-900 border border-gray-200 shadow-sm hover:shadow-md transition-all"
                     >
                         <Phone className="w-5 h-5 text-primary-600" />
-                        082 967 2060
+                        060 806 6589
                     </a>
                     <Link
                         to="/"
