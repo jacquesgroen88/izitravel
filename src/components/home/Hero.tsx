@@ -8,7 +8,8 @@ const rotatingWords = ['Island Holiday', 'Honeymoon', 'Birthday Escape', 'Weddin
 export default function Hero() {
     const navigate = useNavigate();
     const [wordIndex, setWordIndex] = useState(0);
-    const [formData, setFormData] = useState({ destination: '', travelMonth: '', travelYear: '', budget: '', firstName: '', lastName: '', phone: '', email: '', travellers: '' });
+    const today = new Date().toISOString().split('T')[0];
+    const [formData, setFormData] = useState({ destination: '', departureDate: '', returnDate: '', budget: '', firstName: '', lastName: '', phone: '', email: '', travellers: '' });
     const [submitting, setSubmitting] = useState(false);
     const [error, setError] = useState('');
 
@@ -134,40 +135,25 @@ export default function Hero() {
                                         </select>
                                     </div>
 
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">When do you want to travel?</label>
-                                        <div className="grid grid-cols-2 gap-2">
-                                            <select name="travelMonth" value={formData.travelMonth} onChange={handleChange} className="input-field appearance-none">
-                                                <option value="">Month</option>
-                                                <option value="January">January</option>
-                                                <option value="February">February</option>
-                                                <option value="March">March</option>
-                                                <option value="April">April</option>
-                                                <option value="May">May</option>
-                                                <option value="June">June</option>
-                                                <option value="July">July</option>
-                                                <option value="August">August</option>
-                                                <option value="September">September</option>
-                                                <option value="October">October</option>
-                                                <option value="November">November</option>
-                                                <option value="December">December</option>
-                                            </select>
-                                            <select name="travelYear" value={formData.travelYear} onChange={handleChange} className="input-field appearance-none">
-                                                <option value="">Year</option>
-                                                <option value="2026">2026</option>
-                                                <option value="2027">2027</option>
-                                                <option value="2028">2028</option>
-                                                <option value="2029">2029</option>
-                                            </select>
+                                    <div className="grid grid-cols-2 gap-2">
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-1">Departure Date</label>
+                                            <input type="date" name="departureDate" value={formData.departureDate} onChange={handleChange} className="input-field" min={today} required />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-1">Return Date</label>
+                                            <input type="date" name="returnDate" value={formData.returnDate} onChange={handleChange} className="input-field" min={today} required />
                                         </div>
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">Budget</label>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">Budget per person <span className="text-gray-400 font-normal">(incl. flights)</span></label>
                                         <select name="budget" value={formData.budget} onChange={handleChange} className="input-field appearance-none">
                                             <option value="">Select budget</option>
-                                            <option value="standard">Standard</option>
-                                            <option value="premium">Premium</option>
-                                            <option value="luxury">Luxury</option>
+                                            <option value="R8,000 - R12,000 pp">R8k - R12k pp</option>
+                                            <option value="R12,000 - R18,000 pp">R12k - R18k pp</option>
+                                            <option value="R18,000 - R30,000 pp">R18k - R30k pp</option>
+                                            <option value="R30,000 - R50,000 pp">R30k - R50k pp</option>
+                                            <option value="R50,000+ pp">R50k+ pp</option>
                                         </select>
                                     </div>
 

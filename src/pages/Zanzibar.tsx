@@ -9,7 +9,8 @@ import { submitToWebhook } from '../lib/webhook';
 
 export default function Zanzibar() {
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({ firstName: '', lastName: '', travelMonth: '', travelYear: '', travellers: '', budget: '', phone: '', email: '' });
+    const today = new Date().toISOString().split('T')[0];
+    const [formData, setFormData] = useState({ firstName: '', lastName: '', departureDate: '', returnDate: '', travellers: '', budget: '', phone: '', email: '' });
     const [submitting, setSubmitting] = useState(false);
     const [error, setError] = useState('');
 
@@ -103,35 +104,18 @@ export default function Zanzibar() {
                                         <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" className="input-field border-gray-200" required />
                                         <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Last Name" className="input-field border-gray-200" required />
                                     </div>
-                                    <div>
-                                        <p className="text-xs text-gray-500 mb-1 font-medium">When do you want to travel?</p>
-                                        <div className="grid grid-cols-2 gap-2">
-                                            <select name="travelMonth" value={formData.travelMonth} onChange={handleChange} className="input-field appearance-none border-gray-200">
-                                                <option value="">Month</option>
-                                                <option value="January">January</option>
-                                                <option value="February">February</option>
-                                                <option value="March">March</option>
-                                                <option value="April">April</option>
-                                                <option value="May">May</option>
-                                                <option value="June">June</option>
-                                                <option value="July">July</option>
-                                                <option value="August">August</option>
-                                                <option value="September">September</option>
-                                                <option value="October">October</option>
-                                                <option value="November">November</option>
-                                                <option value="December">December</option>
-                                            </select>
-                                            <select name="travelYear" value={formData.travelYear} onChange={handleChange} className="input-field appearance-none border-gray-200">
-                                                <option value="">Year</option>
-                                                <option value="2026">2026</option>
-                                                <option value="2027">2027</option>
-                                                <option value="2028">2028</option>
-                                                <option value="2029">2029</option>
-                                            </select>
+                                    <div className="grid grid-cols-2 gap-2">
+                                        <div>
+                                            <p className="text-xs text-gray-500 mb-1 font-medium">Departure Date</p>
+                                            <input type="date" name="departureDate" value={formData.departureDate} onChange={handleChange} className="input-field border-gray-200" min={today} required />
+                                        </div>
+                                        <div>
+                                            <p className="text-xs text-gray-500 mb-1 font-medium">Return Date</p>
+                                            <input type="date" name="returnDate" value={formData.returnDate} onChange={handleChange} className="input-field border-gray-200" min={today} required />
                                         </div>
                                     </div>
                                     <select name="travellers" value={formData.travellers} onChange={handleChange} className="input-field appearance-none px-2 border-gray-200"><option value="">Number of Travellers</option><option value="1">1</option><option value="2">2</option><option value="3+">3+</option></select>
-                                    <select name="budget" value={formData.budget} onChange={handleChange} className="input-field appearance-none border-gray-200"><option value="">Budget Range (per person)</option><option value="R18k-R25k">R18k - R25k</option><option value="R25k-R40k">R25k - R40k</option><option value="R40k+">R40k+</option></select>
+                                    <select name="budget" value={formData.budget} onChange={handleChange} className="input-field appearance-none border-gray-200"><option value="">Budget per person (incl. flights)</option><option value="R18,000 - R30,000 pp">R18k - R30k pp</option><option value="R30,000 - R50,000 pp">R30k - R50k pp</option><option value="R50,000+ pp">R50k+ pp</option></select>
                                     <div><input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="WhatsApp / Phone" className="input-field border-gray-200" required /></div>
                                     <div><input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email Address" className="input-field border-gray-200" required /></div>
                                     {error && <p className="text-red-500 text-sm">{error}</p>}
