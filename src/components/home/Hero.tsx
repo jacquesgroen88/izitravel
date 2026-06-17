@@ -149,7 +149,6 @@ export default function Hero() {
                                         <label className="block text-sm font-medium text-gray-700 mb-1">Budget per person <span className="text-gray-400 font-normal">(incl. flights)</span></label>
                                         <select name="budget" value={formData.budget} onChange={handleChange} className="input-field appearance-none">
                                             <option value="">Select budget</option>
-                                            <option value="R8,000 - R12,000 pp">R8k - R12k pp</option>
                                             <option value="R12,000 - R18,000 pp">R12k - R18k pp</option>
                                             <option value="R18,000 - R30,000 pp">R18k - R30k pp</option>
                                             <option value="R30,000 - R50,000 pp">R30k - R50k pp</option>

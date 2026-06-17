@@ -105,7 +105,6 @@ export default function QuickQuote() {
                                 <label className="block text-sm font-semibold text-gray-700 mb-2">Budget per person <span className="text-gray-400 font-normal">(incl. flights)</span></label>
                                 <select name="budget" value={formData.budget} onChange={handleChange} className="input-field appearance-none bg-white">
                                     <option value="">Select Budget</option>
-                                    <option value="R8,000 - R12,000 pp">R8,000 - R12,000 per person</option>
                                     <option value="R12,000 - R18,000 pp">R12,000 - R18,000 per person</option>
                                     <option value="R18,000 - R30,000 pp">R18,000 - R30,000 per person</option>
                                     <option value="R30,000 - R50,000 pp">R30,000 - R50,000 per person</option>
