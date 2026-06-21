@@ -188,9 +188,9 @@ export default function Zanzibar() {
                     <h2 className="text-4xl font-bold mb-16 text-center text-gray-900">Top Zanzibar Resorts</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
-                            { title: 'Luxury Beach Resort', nights: '5 Nights', inc: 'All-inclusive', img: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=2000&auto=format&fit=crop' },
-                            { title: 'Romantic Zanzibar Escape', nights: '7 Nights', inc: 'Perfect for honeymoons', img: 'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=2000&auto=format&fit=crop' },
-                            { title: 'Family Zanzibar Holiday', nights: '7 Nights', inc: 'Beachfront resort', img: 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?q=80&w=2000&auto=format&fit=crop' }
+                            { title: 'Azao Resort and Spa', nights: '7 Nights', inc: 'All-inclusive · 4 Star', img: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=2000&auto=format&fit=crop' },
+                            { title: 'Blackstone Beach Resort', nights: '7 Nights', inc: 'All-inclusive · 4 Star', img: 'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=2000&auto=format&fit=crop' },
+                            { title: 'Matemwe Muyuni', nights: '7 Nights', inc: 'All-inclusive · 5 Star', img: 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?q=80&w=2000&auto=format&fit=crop' }
                         ].map((pkg, i) => (
                             <div key={i} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 flex flex-col group">
                                 <div className="overflow-hidden">
