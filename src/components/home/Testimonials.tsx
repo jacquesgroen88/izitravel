@@ -7,7 +7,7 @@ const testimonials = [
         name: 'Sarah van der Merwe',
         location: 'Vanderbijlpark',
         rating: 5,
-        text: 'Our family trip to Mauritius was perfectly orchestrated! Every transfer, hotel, and activity was seamless. Will only book with Vaal Travel Co. from now on.',
+        text: 'Our family trip to Mauritius was perfectly orchestrated! Every transfer, hotel, and activity was seamless. Will only book with Izi Travel from now on.',
         image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop'
     },
     {

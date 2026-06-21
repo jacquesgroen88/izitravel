@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Plane, CheckCircle2, Star, ChevronDown } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -31,14 +31,37 @@ export default function Zanzibar() {
     };
 
     const faqs = [
-        { q: 'Is Zanzibar safe?', a: 'Zanzibar is very safe for tourists. The locals are incredibly welcoming and hospital. As always, practice normal travel safety precautions.' },
+        { q: 'Is Zanzibar safe?', a: 'Zanzibar is very safe for tourists. The locals are incredibly welcoming and hospitable. As always, practice normal travel safety precautions.' },
         { q: 'Do packages include flights?', a: 'Yes, our Zanzibar packages typically include direct or connecting flights from major South African airports to Abeid Amani Karume International Airport.' },
         { q: 'Is Zanzibar good for honeymoons?', a: 'It is one of the top honeymoon destinations in the world! From private plunge pools to romantic dhow cruises, it\'s the perfect romantic escape.' },
         { q: 'What is the best time to travel?', a: 'The best time to visit Zanzibar is during the dry seasons: from July to October, and from December to February.' }
     ];
 
+    const faqSchema = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqs.map(f => ({
+            '@type': 'Question',
+            name: f.q,
+            acceptedAnswer: { '@type': 'Answer', text: f.a }
+        }))
+    });
+
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.textContent = faqSchema;
+        document.head.appendChild(script);
+        return () => { document.head.removeChild(script); };
+    }, []);
+
     return (
-        <div className="bg-white">
+        <>
+            <title>Zanzibar Holiday Packages from R14,200 pp | Izi Travel</title>
+            <meta name="description" content="Book Zanzibar holiday packages from R14,200 per person, including return flights and all-inclusive resorts. Vaal Triangle specialists. Free quote today." />
+            <link rel="canonical" href="https://izitravel.co.za/zanzibar" />
+            <div className="bg-white">
+
             {/* Hero Section */}
             <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
                 <div
@@ -65,9 +88,18 @@ export default function Zanzibar() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.1 }}
-                                className="text-lg md:text-2xl text-white mb-8 max-w-xl font-medium leading-relaxed drop-shadow-xl"
+                                className="text-lg md:text-2xl text-white mb-4 max-w-xl font-medium leading-relaxed drop-shadow-xl"
                             >
                                 Escape to the exotic island of Zanzibar with luxury resorts, crystal-clear waters and unforgettable sunsets.
+                            </motion.p>
+
+                            <motion.p
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.15 }}
+                                className="text-base md:text-lg text-emerald-300 font-semibold mb-8 drop-shadow-lg"
+                            >
+                                Packages from R14,200 per person — return flights &amp; accommodation included.
                             </motion.p>
 
                             <motion.div
@@ -211,8 +243,6 @@ export default function Zanzibar() {
             </section>
 
             <WhyBookWithUs />
-
-            {/* Testimonials */}
             <Testimonials />
 
             {/* Limited Deal */}
@@ -244,6 +274,7 @@ export default function Zanzibar() {
             </section>
 
             <CTASection />
-        </div>
+            </div>
+        </>
     );
 }

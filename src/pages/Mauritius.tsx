@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Plane, CheckCircle2, Star, ChevronDown } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -37,8 +37,31 @@ export default function Mauritius() {
         { q: 'Can you customise my package?', a: 'Absolutely. Every package is a starting point — we specialise in tailoring itineraries to your exact dates, budget, and travel style.' }
     ];
 
+    const faqSchema = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqs.map(f => ({
+            '@type': 'Question',
+            name: f.q,
+            acceptedAnswer: { '@type': 'Answer', text: f.a }
+        }))
+    });
+
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.textContent = faqSchema;
+        document.head.appendChild(script);
+        return () => { document.head.removeChild(script); };
+    }, []);
+
     return (
-        <div className="bg-white">
+        <>
+            <title>Mauritius Holiday Packages from R21,000 pp | Izi Travel</title>
+            <meta name="description" content="Book Mauritius holiday packages from R21,000 per person, including return flights and luxury accommodation. Vaal Triangle travel experts. Free quote in minutes." />
+            <link rel="canonical" href="https://izitravel.co.za/mauritius" />
+            <div className="bg-white">
+
             {/* Hero Section */}
             <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
                 <div
@@ -58,16 +81,25 @@ export default function Mauritius() {
                                 transition={{ duration: 0.6 }}
                                 className="text-5xl md:text-7xl font-extrabold leading-tight mb-6 drop-shadow-2xl text-white"
                             >
-                                Discover the Magic <br /><span className="text-primary-400 drop-shadow-lg">of Mauritius</span>
+                                Mauritius Holiday <br /><span className="text-primary-400 drop-shadow-lg">Packages</span>
                             </motion.h1>
 
                             <motion.p
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.1 }}
-                                className="text-lg md:text-2xl text-white mb-8 max-w-xl font-medium leading-relaxed drop-shadow-xl"
+                                className="text-lg md:text-2xl text-white mb-4 max-w-xl font-medium leading-relaxed drop-shadow-xl"
                             >
                                 Experience world-class luxury resorts, turquoise lagoons, and unmatched hospitality on a tropical island getaway.
+                            </motion.p>
+
+                            <motion.p
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.15 }}
+                                className="text-base md:text-lg text-emerald-300 font-semibold mb-8 drop-shadow-lg"
+                            >
+                                Packages from R21,000 per person — return flights &amp; accommodation included.
                             </motion.p>
 
                             <motion.div
@@ -221,6 +253,7 @@ export default function Mauritius() {
             </section>
 
             <CTASection />
-        </div>
+            </div>
+        </>
     );
 }
